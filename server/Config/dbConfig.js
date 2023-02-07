@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const DB_CONNECT = process.env.DB_CONNECT;
 
-exports.connect = () => {
+const conn = () => {
     mongoose.set('strictQuery', true)
     mongoose.connect(DB_CONNECT , {
         useNewUrlParser : true
@@ -16,3 +16,5 @@ exports.connect = () => {
         process.exit(1)
     })
 }
+
+module.exports = conn;

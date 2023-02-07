@@ -12,8 +12,19 @@ const adminSchema = mongoose.Schema({
         unique: true
     },
     Password : {
-        type: String
-    }
+        type: String,
+        required: true,
+    },
+    Verified: {
+        type: Boolean,
+        default: true,
+    },
+    _roles: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Role",
+        },
+    ]
 })
 
 module.exports = mongoose.model('Admin', adminSchema)
