@@ -17,7 +17,7 @@ const adminSchema = mongoose.Schema({
     },
     Verified: {
         type: Boolean,
-        default: true,
+        default: false,
     },
     _roles: [
         {

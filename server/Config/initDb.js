@@ -1,4 +1,4 @@
-const AdminModel = require('../Models/AdminModel')
+const UserModel = require('../Models/UserModel')
 const RoleModel = require('../Models/RoleModel')
 const connectDB = require('./dbConfig')
 const bcrypt = require("bcryptjs")
@@ -8,7 +8,7 @@ const defaultUser  = {
     Second_Name: process.env.DEFAULT_USER_LAST_NAME,
     Email: process.env.DEFAULT_USER_EMAIL,
     Password: process.env.DEFAULT_USER_PASSWORD,
-    verified: true,
+    Verified: true,
     role: process.env.DEFAULT_USER_ROLE
 };
 
@@ -37,7 +37,7 @@ async function initDb(){
 
 // Create Default Admin
  function createDefaultAdmin(){
-    AdminModel.findOne({Email : defaultUser.Email}, async (err, admin) => {
+    UserModel.findOne({Email : defaultUser.Email}, async (err, admin) => {
         if(err){
             console.log(err);
             process.exit(1);
@@ -45,7 +45,7 @@ async function initDb(){
         if(!admin){
            const salt = bcrypt.genSaltSync(10);
            defaultUser.Password = await bcrypt.hash(defaultUser.Password, salt)
-           const newUser = new AdminModel(defaultUser);
+           const newUser = new UserModel(defaultUser);
            const userRole = await RoleModel.findOne({
             role: defaultUser.role
         })
