@@ -30,7 +30,17 @@ const donnateurSchema = mongoose.Schema({
     Status : {
         type: String,
         default: 'En Cours'
-    }
+    },
+    Verified: {
+        type: Boolean,
+        default: false,
+    },
+    _roles: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Role",
+        },
+    ]
 })
 
 module.exports = mongoose.model('Donnateur', donnateurSchema)

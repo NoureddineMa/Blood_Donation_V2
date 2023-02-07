@@ -26,7 +26,17 @@ const patientSchema = mongoose.Schema({
     },
     Date_Naissance : {
         type: Date,
-    }
+    },
+    Verified: {
+        type: Boolean,
+        default: false,
+    },
+    _roles: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Role",
+        },
+    ]
 })
 
 module.exports = mongoose.model('Patient', patientSchema)
