@@ -1,10 +1,11 @@
 const express = require('express')
-const { model } = require('mongoose')
 const router = express.Router()
 
-const Register = require('../Controllers/AuthController')
+const {Register , Login , EmailVerification} = require('../Controllers/AuthController')
 
 
 router.post('/register', Register)
+router.post('/login' , Login)
+router.get('/register/verify/:token' , EmailVerification)
 
 module.exports = router

@@ -4,9 +4,10 @@ const asyncHandler = require('express-async-handler')
 const User = require('../Models/UserModel')
 const Roles = require('../Models/RoleModel')
 const nodemailer = require('nodemailer')
+const expressAsyncHandler = require('express-async-handler')
 
 // *** *** *** method :post *** *** ***
-// @Route :api/auth/Register
+// @Route :api/auth/register
 // *** acces : public ***
 
 const Register = asyncHandler(async (req,res) => {
@@ -69,5 +70,80 @@ const Register = asyncHandler(async (req,res) => {
     }
 })
 
+// *** *** *** method :post *** *** ***
+// @Route :api/auth/login
+// *** acces : public ***
 
-module.exports = Register;
+const Login = asyncHandler(async (req,res) => {
+    const {Email , Password} = req.body
+
+
+    if(!Email || !Password){
+        res.status(400)
+        .json({message: "Please fill all fields"})
+    }
+
+    // Check for userEmail :
+    const user = await User.findOne({Email})
+    if(user){
+        const StatusUser = user.Verified
+        if(StatusUser){
+            userRole = user._roles
+            const findRoleByID = await Roles.findById({_id: userRole})
+            const nameRole = findRoleByID.role
+            if(user && (await bcrypt.compare(Password , user.Password))){
+
+                // CREATE TOKEN
+                const token = jwt.sign({_id: user._id} , process.env.JWT_SECRET , {
+                    expiresIn: '24h'
+                });
+                res.status(200)
+                .json(token , nameRole , user)
+            } else {
+                res.status(400)
+                .json({message: "Invalid Credentials"})
+            }
+        }
+        else {
+            res.status(400)
+            .json({message: "You need to verify Your Email to Login !"})
+        }
+    } else {
+        res.status(400)
+        .json({message: "User Not Found !"})
+    }
+})
+
+
+// *** *** *** method :post *** *** ***
+// @Route /register/verify/:token
+// *** acces : private ***
+
+const EmailVerification = expressAsyncHandler(async (req,res) => {
+     // retrieve token from params 
+     const token = req.params.token
+     // Verify token :
+     const userData = jwt.verify(token , process.env.JWT_SECRET)
+     if(!userData) return res.status(500)
+     .json({
+        succes: false,
+        message: 'NO TOKEN'
+    })
+    // GET ID 
+    const userID = userData._id
+    User.updateOne({_id: userID} , {$set : {Verified : true }})
+    .then(() => {
+        res.status(200)
+        .json({message: "Email Verified Succesfully !"})
+    }).catch((err) => {
+        res.status(400)
+        .json({message: "Something Went Wrong" + err})
+    })
+})
+
+
+module.exports = {
+    Register,
+    Login,
+    EmailVerification
+}
