@@ -178,11 +178,41 @@ const ForegetPassword = asyncHandler(async(req,res) => {
     }
 })
 
+// *** *** *** method :post *** *** ***
+// @Route :api/auth/resetpassword/:token
+// *** acces : public ***
 
+const ResetPassword = asyncHandler(async(req,res) => {
+    // GET TOKEN FROM REQ:
+    const token = req.params.token
+    const userInfos = jwt.verify(token , process.env.JWT_SECRET)
+    // GET ID: 
+    const userID = userInfos._id
+    // get PW from REQ: 
+    const newPassword = req.body.Password
+    if(!newPassword){
+        res.status(400)
+        .json({message: "Password Required"})
+    } else {
+        // Hash Password :
+        const salt = await bcrypt.genSalt(10)
+        const HashedPassword = await bcrypt.hash(newPassword , salt)
+
+        User.updateOne({_id: userID}, {$set: {Password: HashedPassword}})
+        .then(() => {
+            res.status(200)
+            .json({message: "Password Changed Succesfully !"})
+        }).catch((err) => {
+            res.status(400)
+            .json({message: "Something Went Wrong " + err })
+        })
+    }
+})  
 
 module.exports = {
     Register,
     Login,
     EmailVerification,
-    ForegetPassword
+    ForegetPassword,
+    ResetPassword
 }
