@@ -40,6 +40,32 @@ const Register = asyncHandler(async (req,res) => {
     if(user){
         res.status(200)
         .json({message: "User Created Succesfully But First You need to Verify Your Email !"})
+    // Create MailTransporter:
+    const transporter = nodemailer.createTransport({
+        service: process.env.SMTP,
+        auth: {
+            user: process.env.EMAIL,
+            pass: process.env.PWD_EMAIL
+        },
+        tls: {
+            rejectUnauthorized: false
+        }        
+    })
+    const token = jwt.sign({_id:user._id }, process.env.JWT_SECRET, {expiresIn: '2h'})
+    // Create BodyMail
+    const mailContent = {
+        from : "Verify Your Email" + process.env.EMAIL,
+        to: Email,
+        subject: "Verify Your Email",
+        html: `<h2>Hi Please Verify Your Email <a href="http://localhost:4000/register/verify/${token}"> <button>Click here</button></a></h2>`
+    }
+    // Send Mail:
+    transporter.sendMail(mailContent, (err) => !err)
+     // Other Scénario When User Cant Register
+    }
+    else {
+        res.status(400)
+        .json({message: "Invalid User Data"})
     }
 })
 
