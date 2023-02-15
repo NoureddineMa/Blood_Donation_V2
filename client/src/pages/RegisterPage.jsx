@@ -1,11 +1,20 @@
-import React from 'react'
+import {useState} from 'react'
 import CustomButton from '../components/CustomButton'
 import CustomInput from '../components/CustomInput'
 import CustomLabel from '../components/CustomLabel'
 import { Link } from 'react-router-dom'
 
 
+
 function RegisterPage() {
+
+    const [First_Name, setFirst_Name] = useState()
+    const [Second_Name, setSecond_Name] = useState()
+    const [Email, setEmail] = useState()
+    const [Password, setPassword] = useState()
+    const [_roles, set_roles] = useState()
+
+
     return (
         <>
                     <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-red-600 dark:text-white">

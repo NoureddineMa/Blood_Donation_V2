@@ -5,14 +5,16 @@ import CustomLabel from '../components/CustomLabel'
 import { Link } from 'react-router-dom'
 import {useState} from 'react';
 import axios from 'axios';
-
+import Alert from '../Utils/Alert'
+import Api from '../Utils/Api'
+import { login } from '../Utils/Requests'
 
 
 function LoginPage() {
 
-    const [email , setEmail] = useState();
-    const [password, setPassword] = useState()
-
+    const [Email , setEmail] = useState();
+    const [Password, setPassword] = useState()
+    const [error ,setError] = useState(false)
     const handleEmail = (e) => {
         return setEmail(e.target.value)
     }
@@ -20,13 +22,18 @@ function LoginPage() {
         return setPassword(e.target.value)
     }
 
-    const loginHandler = (e) => {
+    const loginHandler = async (e) => {
         e.preventDefault()
         const user = {
-            email,
-            password
+            Email,
+            Password
         }
-        console.log(user);
+        try {
+            const data = await login(user)
+                console.log(data);
+        } catch (error) {
+            setError(error?.response?.data?.message)
+        }
     }
     return (
         <>
@@ -38,13 +45,14 @@ function LoginPage() {
                                 Sign in to your account
                             </h1>
                             <form className="space-y-4 md:space-y-6" action="#">
+                                {error && <Alert message={error}  className="flex items-center bg-red-400 text-white text-sm font-bold px-4 py-3" /> }
                                 <div>
                                     <CustomLabel for="Email" label="Your Email" />
-                                    <CustomInput type="email" name="email" placeholder="example@gmail.com" value={email} onChange={handleEmail} />
+                                    <CustomInput type="Email" name="Email" placeholder="example@gmail.com" value={Email} onChange={handleEmail} />
                                 </div>
                                 <div>
                                     <CustomLabel for="Password" label="Your Email" />
-                                    <CustomInput type="password" name="password" placeholder="***********" value={password}  onChange={handlePassword} />
+                                    <CustomInput type="Password" name="Password" placeholder="***********" value={Password}  onChange={handlePassword} />
                                 </div>
                                 <div className="flex items-center justify-between">
                                     <Link to="/forgetpassword" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</Link>

@@ -81,6 +81,7 @@ const Login = asyncHandler(async (req, res) => {
     if (!Email || !Password) {
         res.status(400)
             .json({ message: "Please fill all fields" })
+            return;
     }
 
     // Check for userEmail :
@@ -98,7 +99,7 @@ const Login = asyncHandler(async (req, res) => {
                     expiresIn: '24h'
                 });
                 res.status(200)
-                    .json(token, nameRole, user)
+                    .json({token,user,nameRole})
             } else {
                 res.status(400)
                     .json({ message: "Invalid Credentials" })

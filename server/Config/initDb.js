@@ -18,7 +18,6 @@ async function initDb(){
     await createDefaultAdmin();
 }
 
-
 // Create Default Roles
  function createDefaultRoles(){
     RoleModel.countDocuments({}, async (err, count) => {
