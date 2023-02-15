@@ -2,9 +2,10 @@ import {useState} from 'react'
 import CustomButton from '../components/CustomButton'
 import CustomInput from '../components/CustomInput'
 import CustomLabel from '../components/CustomLabel'
-import { Link } from 'react-router-dom'
+import { Link , useNavigate } from 'react-router-dom'
 import {register} from '../Utils/Requests'
 import Alert from '../Utils/Alert'
+import Spinner from '../Utils/Spinner'
 
 
 
@@ -19,7 +20,9 @@ function RegisterPage() {
     const [error , setError] = useState(false)
     const [msgSucces , setMsgSucces] = useState()
     const [notError , setNotError] = useState(false)
+    const [loading, setLoading] = useState(false)
 
+    const navigate = useNavigate()
 
     const handleFirst_Name = (e) => {
         return setFirst_Name(e.target.value)
@@ -48,13 +51,14 @@ function RegisterPage() {
             _roles
         }
         try {
+            setLoading(true)
             const data = await register(user)
             setMsgSucces(data.message)
             setNotError(true)
             setError(false)
-
+            setLoading(false) 
         } catch (error) {
-            console.log(error?.response?.data?.message);
+            setLoading(false)
             setError(true)
             setNotError(false)
             setMsg(error?.response?.data?.message)
@@ -63,15 +67,20 @@ function RegisterPage() {
     
     return (
         <>
-                    <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-red-600 dark:text-white">
+        <a href="#" className="flex font-bold justify-center mb-6 text-2xl font-semibold text-black-600 dark:text-white">
+                        Sign up
+                    </a>
+                    <a href="#" className="flex items-center mb-6  font-semibold text-red-600 dark:text-white">
                         Blood Donation
                     </a>
-                            <h1 className=" font-bold leading-tight tracking-tight text-gray-900  dark:text-white">
+                            <h1 className=" leading-tight tracking-tight text-gray-900  dark:text-white">
                                 Sign up to <span className='text-red-600'>save</span>  millions of people or to get <span className='text-red-600'>helped</span>  by Others ..
                             </h1>
                             <form className="space-y-4 md:space-y-6" action="#">
+                                {loading && <Spinner />}
                                 {error && <Alert message={msg} className="flex items-center bg-red-400 text-white text-sm font-bold px-4 py-3"  />}
-                                {notError && <Alert message={msgSucces} className="flex items-center bg-yellow-400 text-white text-sm font-bold px-4 py-3"  />}
+                                {notError && <Alert message={msgSucces}  style="text-white" className="flex items-center  bg-[#03C988] text-white text-sm font-bold px-4 py-3"  />}
+
                                 <div>
                                     <CustomLabel for="First_Name" label="First Name" />
                                     <CustomInput type="text" name="firstName" placeholder="First Name" onChange={handleFirst_Name}  />
