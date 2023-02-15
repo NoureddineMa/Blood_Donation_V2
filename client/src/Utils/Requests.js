@@ -9,3 +9,9 @@ export async function register(user){
     const res = await Api.post(`/auth/register`,user);
     return res.data
 }
+
+export async function ForegetPassword(user){
+    const res = await Api.post(`/auth/forgetpassword`,user)
+    return res.data
+}
+
