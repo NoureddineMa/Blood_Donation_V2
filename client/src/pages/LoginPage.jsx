@@ -54,7 +54,7 @@ function LoginPage() {
                                     <CustomInput type="Email" name="Email" placeholder="example@gmail.com" value={Email} onChange={handleEmail} />
                                 </div>
                                 <div>
-                                    <CustomLabel for="Password" label="Your Email" />
+                                    <CustomLabel for="Password" label="Your Password" />
                                     <CustomInput type="Password" name="Password" placeholder="***********" value={Password}  onChange={handlePassword} />
                                 </div>
                                 <div className="flex items-center justify-between">
