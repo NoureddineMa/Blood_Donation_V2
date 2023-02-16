@@ -5,6 +5,7 @@ import Alert from "../Utils/Alert"
 import {ResetPwd} from "../Utils/Requests"
 import { useParams , useNavigate } from "react-router-dom"
 import { useState } from "react"
+import Spinner from "../Utils/Spinner"
 
 
 function ResetPassword() {
@@ -15,6 +16,7 @@ function ResetPassword() {
     const [msgSucces , setMsgSucces] = useState()
     const [error, setError] = useState(false)
     const [msgError, setMsgError] = useState()
+    const [loading, setLoading] = useState(false)
 
     const nav = useNavigate();
 
@@ -35,9 +37,11 @@ function ResetPassword() {
             setMsgError('Password is not the same !')
         } else  {
             try {
+                setLoading(true)
                 const data = await ResetPwd(token,newPassword)
                 setError(false)
                 setSucces(true)
+                setLoading(false)
                 setMsgSucces(data.message)
                 setTimeout(() => {
                     nav('/login')
@@ -56,6 +60,7 @@ function ResetPassword() {
                                 Enter New Password
                             </h1>
                             <form className="space-y-4 md:space-y-6">
+                                {loading && <Spinner />}
                                 {succes && <Alert className="flex items-center bg-green-400 text-white text-sm font-bold px-4 py-3" message={msgSucces} />}
                                 {error &&  <Alert className="flex items-center bg-red-400 text-white text-sm font-bold px-4 py-3" message={msgError} />}
                                 <div>
