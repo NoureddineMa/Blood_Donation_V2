@@ -38,12 +38,13 @@ function LoginPage() {
     return (
         <>
             
-                    <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-red-600 dark:text-white">
-                        Blood Donation
-                    </a>
-                            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                    
+                            <h1 className=" flex justify-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                                 Sign in to your account
                             </h1>
+                            <a href="#" className="flex items-center mb-6  font-semibold text-red-600 dark:text-white">
+                        Blood Donation
+                    </a>
                             <form className="space-y-4 md:space-y-6" action="#">
                                 {error && <Alert message={error}  className="flex items-center bg-red-400 text-white text-sm font-bold px-4 py-3" /> }
                                 <div>
