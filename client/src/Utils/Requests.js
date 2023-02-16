@@ -15,3 +15,7 @@ export async function ForegetPassword(user){
     return res.data
 }
 
+export async function ResetPwd(token,newPassword){
+    const res = await Api.post(`/auth/resetpassword/${token}`,{password: newPassword})
+    return res.data
+}

@@ -149,6 +149,10 @@ const EmailVerification = expressAsyncHandler(async (req, res) => {
 
 const ForegetPassword = asyncHandler(async(req,res) => {
     const UserEmail = req.body.Email
+    if(!UserEmail){
+        res.status(400)
+           .json({message: "please fill all fields"})
+    }
     const RetrieveEmail = await User.findOne({Email: UserEmail})
     if(RetrieveEmail){
         const transporter = nodemailer.createTransport({
@@ -167,7 +171,7 @@ const ForegetPassword = asyncHandler(async(req,res) => {
             from: "Reset Password" + process.env.EMAIL,
             to: UserEmail,
             subject: 'Reset Password',
-            html: `<h2>To reset you password please click here <a href="http://localhost:4000/resetpassword/${token}">here</a></h2>`
+            html: `<h2>To reset you password please click here <a href="http://localhost:3000/resetpassword/${token}">here</a></h2>`
         }
         // Send Email : 
         transporter.sendMail(mailContent , (err) => !err ? console.log(`Mail just send to ${UserEmail}`) : console.log(err))
@@ -175,7 +179,7 @@ const ForegetPassword = asyncHandler(async(req,res) => {
         .json({message:`Mail just send to ${UserEmail}`})
     } else {
         res.status(400)
-        .json({message: "Email Wrong Or Not Found !!"})
+        .json({message: "Email Wrong or Not Found !!"})
     }
 })
 
@@ -190,7 +194,7 @@ const ResetPassword = asyncHandler(async(req,res) => {
     // GET ID: 
     const userID = userInfos._id
     // get PW from REQ: 
-    const newPassword = req.body.Password
+    const newPassword = req.body.password
     if(!newPassword){
         res.status(400)
         .json({message: "Password Required"})
