@@ -3,14 +3,15 @@ import CustomButton from '../components/CustomButton'
 import CustomInput from '../components/CustomInput'
 import CustomLabel from '../components/CustomLabel'
 import { Link } from 'react-router-dom'
-import {useState} from 'react';
-import axios from 'axios';
 import Alert from '../Utils/Alert'
-import Api from '../Utils/Api'
 import { login } from '../Utils/Requests'
+import {useState,useContext} from 'react';
+import UserContext from '../Context/UserContext'
 
 
 function LoginPage() {
+
+    const { setUser } = useContext(UserContext);
 
     const [Email , setEmail] = useState();
     const [Password, setPassword] = useState()
@@ -31,6 +32,7 @@ function LoginPage() {
         try {
             const data = await login(user)
                 console.log(data);
+                setUser(data.user)
         } catch (error) {
             setError(error?.response?.data?.message)
         }

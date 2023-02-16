@@ -5,10 +5,12 @@ import ResetPassword from "./pages/ResetPassword";
 import LayoutAuth from "./pages/LayoutAuth";
 import LandingPage from "./pages/LandingPage";
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { UserProvider } from "./Context/UserContext";
 
 function App() {
   return (
     <Router>
+      <UserProvider>
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route element={<LayoutAuth />}  >
@@ -18,6 +20,7 @@ function App() {
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
         </Route>
       </Routes>
+      </UserProvider>
     </Router> 
   );
 }
