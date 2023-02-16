@@ -57,6 +57,9 @@ function RegisterPage() {
             setNotError(true)
             setError(false)
             setLoading(false) 
+            setTimeout(() => {
+                navigate('/login')
+            }, 2000);
         } catch (error) {
             setLoading(false)
             setError(true)
