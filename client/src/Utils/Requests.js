@@ -19,3 +19,8 @@ export async function ResetPwd(token,newPassword){
     const res = await Api.post(`/auth/resetpassword/${token}`,{password: newPassword})
     return res.data
 }
+
+export async function VerifyAcc(token){
+    const res = await Api.get(`/auth/verifyaccount/${token}`)
+    return res.data
+}

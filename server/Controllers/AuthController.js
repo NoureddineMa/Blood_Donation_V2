@@ -214,10 +214,31 @@ const ResetPassword = asyncHandler(async(req,res) => {
     }
 })  
 
+
+const verifyAcc = asyncHandler(async (req,res) => {
+        const token = req.params.token
+        const userData = jwt.verify(token, process.env.JWT_SECRET) 
+        if(!userData) return res.status(400)
+        .json({
+            succes: false,
+            message: 'No Token !'
+        })
+        const userId = userData._id
+        User.updateOne({_id: userId}, {$set : { Verified : true}})
+        .then(() => {
+            res.status(200)
+            .json({message: "email verified succesfully !"})
+        }).catch((err) => {
+            res.status(400)
+            .json({message: "Something went wrong !" + err})
+        })
+})
+
 module.exports = {
     Register,
     Login,
     EmailVerification,
     ForegetPassword,
-    ResetPassword
+    ResetPassword,
+    verifyAcc
 }
