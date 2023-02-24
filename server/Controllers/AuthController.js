@@ -58,7 +58,7 @@ const Register = asyncHandler(async (req, res) => {
             from: "Verify Your Email" + process.env.EMAIL,
             to: Email,
             subject: "Verify Your Email",
-            html: `<h2>Hi Please Verify Your Email <a href="http://localhost:4000/register/verify/${token}"> <button>Click here</button></a></h2>`
+            html: `<h2>Hi Please Verify Your Email <a href="http://localhost:3000/register/verify/${token}"> <button>Click here</button></a></h2>`
         }
         // Send Mail:
         transporter.sendMail(mailContent, (err) => !err)

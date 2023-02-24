@@ -4,7 +4,8 @@ import ForgetPassword from "./pages/ForgetPassword";
 import ResetPassword from "./pages/ResetPassword";
 import LayoutAuth from "./pages/LayoutAuth";
 import LandingPage from "./pages/LandingPage";
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import VerifyAccount from "./pages/VerifyAccount";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { UserProvider } from "./Context/UserContext";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/ForgetPassword" element={<ForgetPassword />} />
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
+        <Route path="/register/verify/:token" element={<VerifyAccount />} />
         </Route>
       </Routes>
       </UserProvider>
