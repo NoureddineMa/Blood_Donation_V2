@@ -8,6 +8,7 @@ const defaultUser  = {
     Second_Name: process.env.DEFAULT_USER_LAST_NAME,
     Email: process.env.DEFAULT_USER_EMAIL,
     Password: process.env.DEFAULT_USER_PASSWORD,
+    Phone_Number: process.env.DEFAULT_PHONE_NUMBER,
     Verified: true,
     role: process.env.DEFAULT_USER_ROLE
 };

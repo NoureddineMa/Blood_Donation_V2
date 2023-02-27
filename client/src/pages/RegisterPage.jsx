@@ -15,6 +15,7 @@ function RegisterPage() {
     const [Second_Name, setSecond_Name] = useState()
     const [Email, setEmail] = useState()
     const [Password, setPassword] = useState()
+    const [Phone_Number, setPhoneNumber] = useState()
     const [_roles, set_roles] = useState()
     const [msg , setMsg] = useState()
     const [error , setError] = useState(false)
@@ -36,9 +37,13 @@ function RegisterPage() {
     const handlePassword = (e) => {
         return setPassword(e.target.value)
     }
+    const handlePhoneNumber = (e)=> {
+        return setPhoneNumber(e.target.value)
+    }
     const handleroles = (e) => {
         return set_roles(e.target.value)
     }
+
 
 
     const handleRegister = async (e) => {
@@ -48,6 +53,7 @@ function RegisterPage() {
             Second_Name,
             Email,
             Password,
+            Phone_Number,
             _roles
         }
         try {
@@ -73,9 +79,6 @@ function RegisterPage() {
         <a href="#" className="flex font-bold justify-center mb-6 text-2xl font-semibold text-black-600 dark:text-white">
                         Sign up
                     </a>
-                    <a href="#" className="flex items-center mb-6  font-semibold text-red-600 dark:text-white">
-                        Blood Donation
-                    </a>
                             <h1 className=" leading-tight tracking-tight text-gray-900  dark:text-white">
                                 Sign up to <span className='text-red-600'>save</span>  millions of people or to get <span className='text-red-600'>helped</span>  by Others ..
                             </h1>
@@ -99,6 +102,10 @@ function RegisterPage() {
                                 <div>
                                     <CustomLabel for="password" label="Password" />
                                     <CustomInput type="password" name="password" placeholder="*******" onChange={handlePassword} />
+                                </div>
+                                <div>
+                                    <CustomLabel for="Phone_Number" label="Phone Number" />
+                                    <CustomInput type="Number" name="Phone Number"  placeholder="06 XX XX XX XX"  onChange={handlePhoneNumber} />
                                 </div>
                                 <div>
                                 <CustomLabel for="Roles" label="Register as :" />

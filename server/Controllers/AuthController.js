@@ -11,9 +11,9 @@ const expressAsyncHandler = require('express-async-handler')
 // *** acces : public ***
 
 const Register = asyncHandler(async (req, res) => {
-    const { First_Name, Second_Name, Email, Password, _roles } = req.body;
+    const { First_Name, Second_Name, Email, Password,Phone_Number, _roles } = req.body;
 
-    if (!First_Name || !Second_Name || !Email || !Password || !_roles) {
+    if (!First_Name || !Second_Name || !Email || !Password || !Phone_Number || !_roles) {
         res.status(400)
             .json({ message: "please fill all fields" })
     }
@@ -22,6 +22,13 @@ const Register = asyncHandler(async (req, res) => {
     if (userExist) {
         res.status(400)
             .json({ message: "User Already Exist " })
+    }
+
+    // check if the Phone number of user is already exist : 
+    const PhoneNumberExist = await User.findOne({Phone_Number})
+    if(PhoneNumberExist){
+        res.status(400)
+        res.json({message: "Please try another Phone Number"})
     }
 
     // hash Password : 
@@ -36,6 +43,7 @@ const Register = asyncHandler(async (req, res) => {
         Second_Name,
         Email,
         Password: HashedPassword,
+        Phone_Number,
         _roles: RoleName
     })
     if (user) {

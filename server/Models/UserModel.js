@@ -15,6 +15,11 @@ const adminSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    Phone_Number: {
+        type:String,
+        required: true,
+        unique: true
+    },
     Verified: {
         type: Boolean,
         default: false,
