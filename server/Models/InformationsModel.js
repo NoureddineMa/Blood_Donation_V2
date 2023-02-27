@@ -9,6 +9,14 @@ const infoSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    Sexe: {
+        type: String,
+        required: true
+    },
+    Age: {
+        type: String,
+        required: true
+    },
     NatureBlood: {
         type: String,
         required: true
