@@ -5,6 +5,7 @@ import ResetPassword from "./pages/ResetPassword";
 import LayoutAuth from "./pages/LayoutAuth";
 import LandingPage from "./pages/LandingPage";
 import VerifyAccount from "./pages/VerifyAccount";
+import Informations from "./pages/Informations";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { UserProvider } from "./Context/UserContext";
 
@@ -21,6 +22,10 @@ function App() {
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
         <Route path="/register/verify/:token" element={<VerifyAccount />} />
         </Route>
+        <Route path="/Informations" element={<Informations />} />
+        {/* <Routes>
+          <Route path="/AddOwn_Informations" element={<Informations />} />
+        </Routes> */}
       </Routes>
       </UserProvider>
     </Router> 

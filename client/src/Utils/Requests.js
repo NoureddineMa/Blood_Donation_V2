@@ -24,3 +24,4 @@ export async function VerifyAcc(token){
     const res = await Api.get(`/auth/verifyaccount/${token}`)
     return res.data
 }
+
