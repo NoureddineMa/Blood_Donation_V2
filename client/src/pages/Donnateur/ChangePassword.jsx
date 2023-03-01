@@ -1,9 +1,31 @@
-import React from 'react'
+import React , {useState , useContext} from 'react'
 import CustomButton from '../../components/CustomButton'
 import CustomInput from '../../components/CustomInput'
 import CustomLabel from '../../components/CustomLabel'
+import { ChangePwd } from '../../Utils/Requests'
+import UserContext from '../../Context/UserContext'
 
 function ChangePassword() {
+
+    const { user } = useContext(UserContext)
+    console.log(user);  
+    const id = user._id  
+    console.log(id);
+
+    const [oldPassword , setOldPassword] = useState()
+    const [newPassword, setnewPassword] = useState()
+    const handleoldInput = (e) => {
+       return setOldPassword(e.target.value)
+    }
+    const handleNewInput = (e) => {
+        return setnewPassword(e.target.value)
+    }
+    const handleChange = async (e) => {
+            e.preventDefault();
+            const data = await ChangePwd(id,oldPassword,newPassword)
+            console.log(data);   
+    }
+
   return (
     <>
       <section className=" py-1">
@@ -23,7 +45,7 @@ function ChangePassword() {
                             <div className="w-full lg:w-4/12 px-4">
                                     <div className="relative w-full mb-3">
                                     <CustomLabel type="text" label="Last Password" />
-                                    <CustomInput type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" />
+                                    <CustomInput type="password" onChange={handleoldInput}  className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" />
                                     </div>
                                 </div>
                             </div>
@@ -31,11 +53,10 @@ function ChangePassword() {
                                 <div className="w-full lg:w-4/12 px-4">
                                     <div className="relative w-full mb-3">
                                     <CustomLabel type="text" label="New Password" />
-                                    <CustomInput type="text" className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" />
+                                    <CustomInput type="password" onChange={handleNewInput}  className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" />
                                     </div>
-                                <CustomButton type="submit" content="Change Password" className="mt-7"/>
+                                <CustomButton type="submit" onClick={handleChange} content="Change Password" className="mt-7"/>
                                 </div>
-
                             </div>
                         </form>
                     </div>

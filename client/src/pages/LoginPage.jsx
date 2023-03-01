@@ -11,7 +11,7 @@ import UserContext from '../Context/UserContext'
 
 function LoginPage() {
 
-
+    const nav = useNavigate()
     const { setUser } = useContext(UserContext);
 
     const [Email, setEmail] = useState();
@@ -42,6 +42,7 @@ function LoginPage() {
             setMsg("Authentication Success ...")
             setError(false)
             setStateAuth(true)
+            nav('/HomePage')
         } catch (error) {
             setError(error?.response?.data?.message)
         }

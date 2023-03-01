@@ -25,3 +25,8 @@ export async function VerifyAcc(token){
     return res.data
 }
 
+export async function ChangePwd(id,oldPassword,newPassword){
+    const res = await Api.post(`/auth/changepassword/${id}`,oldPassword, {password: newPassword})
+    return res.data
+}
+

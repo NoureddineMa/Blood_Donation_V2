@@ -27,7 +27,6 @@ function App() {
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
         <Route path="/register/verify/:token" element={<VerifyAccount />} />
         </Route>
-
         <Route element={<IsLoggedin />} >
         <Route  element={<LayoutUsers />} >
             <Route path="/HomePage" element={<HomePage />}   />
@@ -37,7 +36,6 @@ function App() {
         </Route>
         </Route>
       </Routes>
-
       </UserProvider>
     </Router> 
   );
