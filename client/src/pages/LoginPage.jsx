@@ -36,7 +36,6 @@ function LoginPage() {
             const data = await login(user)
             console.log(data);
             setUser(data.user);
-            console.log(data.user.Email);
             localStorage.setItem("token", data?.token)
             localStorage.setItem("nameRole", data?.nameRole )
             localStorage.setItem("Email", data?.user?.Email)

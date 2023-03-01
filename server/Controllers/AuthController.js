@@ -250,24 +250,26 @@ const changePassword = asyncHandler(async (req, res) => {
     const { oldPassword, newPassword } = req.body
     const userID = req.params.id
 
-    if (!oldPassword || !newPassword) {
+    if(!oldPassword , !newPassword){
         res.status(400)
-            .json({ message: "Please fill all fields" })
-    } else {
-       const Change = User.findById({_id: userID})
-         if(Change){
+        .json({message: "please add all fields"})
+    }
+
+    const UserData = await User.findById({_id: userID})
+    console.log(UserData.Password);
+    if(UserData && (await bcrypt.compare(oldPassword, UserData.Password))){
             const salt = await bcrypt.genSalt(10)
             const HashedPassword = await bcrypt.hash(newPassword , salt)
-            const done = await User.updateOne({_id: userID}, {$set: {Password: HashedPassword}})
-            if(done){
+            const PWDCHANGED = User.updateOne({_id: userID}, {$set: {Password: HashedPassword}})
+            if(PWDCHANGED){
                 res.status(200)
                 .json({message: "Password Changed Succesfully !"})
-            } else {
-                res.status(400)
-                .json({message: "Something Went Wrong !"})
             }
-         }
-}})
+        } else {
+            res.status(400)
+            .json({message: "Old Password Wrong !"})
+        }
+})
 
 module.exports = {
     Register,
