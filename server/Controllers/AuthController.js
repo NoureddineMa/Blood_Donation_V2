@@ -242,11 +242,39 @@ const verifyAcc = asyncHandler(async (req,res) => {
         })
 })
 
+// *** *** *** method :post *** *** ***
+// @Route :api//changePassword
+// *** acces : public ***
+
+const changePassword = asyncHandler(async (req, res) => {
+    const { oldPassword, newPassword } = req.body
+    const userID = req.params.id
+
+    if (!oldPassword || !newPassword) {
+        res.status(400)
+            .json({ message: "Please fill all fields" })
+    } else {
+       const Change = User.findById({_id: userID})
+         if(Change){
+            const salt = await bcrypt.genSalt(10)
+            const HashedPassword = await bcrypt.hash(newPassword , salt)
+            const done = await User.updateOne({_id: userID}, {$set: {Password: HashedPassword}})
+            if(done){
+                res.status(200)
+                .json({message: "Password Changed Succesfully !"})
+            } else {
+                res.status(400)
+                .json({message: "Something Went Wrong !"})
+            }
+         }
+}})
+
 module.exports = {
     Register,
     Login,
     EmailVerification,
     ForegetPassword,
     ResetPassword,
-    verifyAcc
+    verifyAcc,
+    changePassword
 }

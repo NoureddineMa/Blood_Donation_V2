@@ -7,7 +7,8 @@ const {
     EmailVerification,
     ForegetPassword,
     ResetPassword,
-    verifyAcc
+    verifyAcc,
+    changePassword
     } = require('../Controllers/AuthController')
 
 
@@ -17,6 +18,7 @@ router.get('/register/verify/:token' , EmailVerification)
 router.post('/forgetpassword' , ForegetPassword)
 router.post('/resetpassword/:token', ResetPassword)
 router.get('/verifyaccount/:token', verifyAcc)
+router.post('/changepassword/:id', changePassword)
 
 
 module.exports = router;
