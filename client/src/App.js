@@ -13,6 +13,7 @@ import HomePage from "./pages/Donnateur/HomePage";
 import ChangePassword from "./pages/Donnateur/ChangePassword";
 import IsLoggedin from "./Utils/IsLoggedin";
 import LayoutUsers from "./pages/LayoutUsers"
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -35,6 +36,8 @@ function App() {
             <Route path="/changePassword" element={<ChangePassword />}/>
         </Route>
         </Route>
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
       </UserProvider>
     </Router> 
