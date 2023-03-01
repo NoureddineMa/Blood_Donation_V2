@@ -11,7 +11,7 @@ import ViewPatient from "./pages/Donnateur/ViewPatient";
 import PostBloodDonation from "./pages/Donnateur/PostBloodDonation";
 import HomePage from "./pages/Donnateur/HomePage";
 import ChangePassword from "./pages/Donnateur/ChangePassword";
-
+import IsLoggedin from "./Utils/IsLoggedin";
 import LayoutUsers from "./pages/LayoutUsers"
 
 function App() {
@@ -28,11 +28,13 @@ function App() {
         <Route path="/register/verify/:token" element={<VerifyAccount />} />
         </Route>
 
+        <Route element={<IsLoggedin />} >
         <Route  element={<LayoutUsers />} >
             <Route path="/HomePage" element={<HomePage />}   />
             <Route path="/PostBlood" element={<PostBloodDonation />} />
             <Route path="/ViewPatient" element={<ViewPatient />}   />
             <Route path="/changePassword" element={<ChangePassword />}/>
+        </Route>
         </Route>
       </Routes>
 
