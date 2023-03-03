@@ -107,7 +107,7 @@ const Login = asyncHandler(async (req, res) => {
                     expiresIn: '24h'
                 });
                 res.status(200)
-                    .header('Authorization', `Bearer ${token}`)
+                    .set('Authorization', `Bearer ${token}`)
                     .json({token,user,nameRole})
             } else {
                 res.status(400)

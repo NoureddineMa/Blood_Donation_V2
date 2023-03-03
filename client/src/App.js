@@ -27,8 +27,6 @@ import CheckRole from "./Utils/CheckRole";
 
 
 function App() {
-
-
   return (
     <Router>
       <UserProvider>
@@ -47,44 +45,46 @@ function App() {
         {/* should login to see this pages */}
         {/* DONNATEUR */}
         <Route  element={<IsLoggedin />} >
-          <Route element={<CheckRole roles={["Donnateur"]} />}  >
-                <Route  element={<LayoutDonnateur />} >
-                <Route exact  path="/HomePageDonnateur" element={<HomePageDonnateur />}   />
+          <Route element={<CheckRole Roles={["Donnateur"]} />}>
+            <Route  element={ <LayoutDonnateur />} >
+                <Route path="/HomePageDonnateur" element={<HomePageDonnateur />}   />
                 <Route path="/PostBlood" element={<PostBloodDonation />} />
                 <Route path="/ViewPatient" element={<ViewPatient />}   />
                 <Route path="/changePassword" element={<ChangePassword />}/>
+            </Route>
           </Route>
-          </Route> 
         {/*END  DONNATEUR  ROUTES */}
 
 
         {/* PATIENT  */}
-        <Route element={["Patient"]}>
-          <Route  element={<LayoutPatient />} >
-                <Route exact  path="/HomePagePatient" element={<HomePagePatient />} />
+          <Route element={<CheckRole Roles={["Patient"]} />}>
+            <Route  element={<LayoutPatient /> } >
+                <Route path="/HomePagePatient" element={<HomePagePatient />} />
                 <Route path="/NeedBlood" element={<NeedBlood />} />
                 <Route path="/ViewDonnateur" element={<ViewDonnateur />} />
                 <Route path="/changePassword" element={<ChangePassword />} />
+            </Route>
           </Route>
-        </Route>
         {/*END  PATIENT  ROUTES */}       
 
 
 
         {/* ADMIN  */}
-        <Route element={["Admin"]}>
-            <Route  element={<LayoutAdmin />} >
-                <Route exact  path="/HomePageAdmin" element={<HomePageAdmin />} />
+        <Route element={<CheckRole Roles={["Patient"]} />}>
+              <Route  element={<LayoutAdmin />} >
+                <Route path="/HomePageAdmin" element={<HomePageAdmin />} />
                 <Route path="/ViewPatients" element={<ViewPatients />} />
                 <Route path="/ViewDonnateurs" element={<ViewDonnateurs />} />
                 <Route path="/ViewMessages" element={<ViewMessages />} />
-          </Route>
+              </Route>
         </Route>
         {/* END ADMIN ROUTES  */}
-
-
         </Route>
+
+
         <Route path="*" element={<NotFound />} />
+
+
       </Routes>
       </UserProvider>
     </Router>

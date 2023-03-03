@@ -33,11 +33,11 @@ function ChangePassword() {
         }
         try {
             e.preventDefault();
-            // const token = localStorage.getItem('token')
-            // const config = {
-            //     headers: { authorization: `Bearer ${token}` }
-            //   };
-            const data = await ChangePwd(id, pwds)
+            const token = localStorage.getItem('token')
+            const data = await ChangePwd(id, pwds, {
+                headers: { Authorization: `Bearer ${token}`}
+              })
+              console.log(data);
             setError(false)
             setSucces(true)
             setMsgSucces(data.message)

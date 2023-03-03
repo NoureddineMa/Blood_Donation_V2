@@ -2,7 +2,7 @@ import React from 'react'
 import CustomButton from '../components/CustomButton'
 import CustomInput from '../components/CustomInput'
 import CustomLabel from '../components/CustomLabel'
-import { Link, useNavigate , useLocation  } from 'react-router-dom'
+import { Link , useNavigate , useLocation } from 'react-router-dom'
 import Alert from '../Utils/Alert'
 import { login } from '../Utils/Requests'
 import { useState, useContext } from 'react';
@@ -12,8 +12,9 @@ import UserContext from '../Context/UserContext'
 function LoginPage() {
 
     const navigate = useNavigate()
-    // const location = useLocation()
-    // const from = location.state?.from || "/login";
+    const location = useLocation()
+    const from = location.state?.from || '/'
+   
 
     const { setUser } = useContext(UserContext);
 
@@ -23,7 +24,6 @@ function LoginPage() {
     const [msg, setMsg] = useState()
     const [stateAuth, setStateAuth] = useState(false)
     
-
     const handleEmail = (e) => {
         return setEmail(e.target.value)
     }
@@ -39,7 +39,6 @@ function LoginPage() {
         }
         try {
             const data = await login(user)
-            console.log(data);
             setUser(data.user);
             localStorage.setItem("token", data?.token)
             localStorage.setItem("nameRole", data?.nameRole )
@@ -47,8 +46,8 @@ function LoginPage() {
             setMsg("Authentication Success ...")
             setError(false)
             setStateAuth(true)
-
-            
+            navigate(from, { replace: true});
+            // here 
         } catch (error) {
             setError(error?.response?.data?.message)
         }
