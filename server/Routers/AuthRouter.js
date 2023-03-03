@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-
+// const tokenVerify = require('../Middlewares/verifyToken')
 const {
     Register,
     Login,
@@ -18,7 +18,7 @@ router.get('/register/verify/:token' , EmailVerification)
 router.post('/forgetpassword' , ForegetPassword)
 router.post('/resetpassword/:token', ResetPassword)
 router.get('/verifyaccount/:token', verifyAcc)
-router.post('/changepassword/:id', changePassword)
+router.post('/changepassword/:id',changePassword)
 
 
 module.exports = router;

@@ -33,6 +33,10 @@ function ChangePassword() {
         }
         try {
             e.preventDefault();
+            // const token = localStorage.getItem('token')
+            // const config = {
+            //     headers: { authorization: `Bearer ${token}` }
+            //   };
             const data = await ChangePwd(id, pwds)
             setError(false)
             setSucces(true)

@@ -107,6 +107,7 @@ const Login = asyncHandler(async (req, res) => {
                     expiresIn: '24h'
                 });
                 res.status(200)
+                    .header('Authorization', `Bearer ${token}`)
                     .json({token,user,nameRole})
             } else {
                 res.status(400)
@@ -122,7 +123,6 @@ const Login = asyncHandler(async (req, res) => {
             .json({ message: "User Not Found !" })
     }
 })
-
 
 // *** *** *** method :post *** *** ***
 // @Route /register/verify/:token
@@ -243,7 +243,7 @@ const verifyAcc = asyncHandler(async (req,res) => {
 })
 
 // *** *** *** method :post *** *** ***
-// @Route :api//changePassword
+// @Route :api/changePassword/:id
 // *** acces : public ***
 
 const changePassword = asyncHandler(async (req, res) => {
