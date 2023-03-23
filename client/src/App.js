@@ -7,20 +7,7 @@ import LandingPage from "./pages/LandingPage";
 import VerifyAccount from "./pages/VerifyAccount";
 import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom'
 import { UserProvider } from "./Context/UserContext";
-import ViewPatient from "./pages/Donnateur/ViewPatient";
-import PostBloodDonation from "./pages/Donnateur/PostBloodDonation";
-import HomePageDonnateur from "./pages/Donnateur/HomePageDonnateur";
-import ChangePassword from "./pages/Donnateur/ChangePassword";
-import IsLoggedin from "./Utils/IsLoggedin";
 import NotFound from "./pages/NotFound";
-import HomePagePatient from "./pages/Patient/HomePagePatient";
-import NeedBlood from "./pages/Patient/NeedBlood"
-import ViewDonnateur from "./pages/Patient/ViewDonnateur"
-import HomePageAdmin from "./pages/Admin/HomePageAdmin";
-import ViewPatients from "./pages/Admin/ViewPatients"
-import ViewDonnateurs from "./pages/Admin/ViewDonnateurs"
-import ViewMessages from "./pages/Admin/ViewMessages"
-import CheckRole from "./Utils/CheckRole";
 
 
 function App() {

@@ -9,7 +9,7 @@ function Spinner() {
             </svg>
             <span class="sr-only">Loading...</span>
         </div>
-    )
+    )   
 }
 
 export default Spinner
