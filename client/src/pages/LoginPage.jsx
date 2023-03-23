@@ -46,7 +46,6 @@ function LoginPage() {
             setMsg("Authentication Success ...")
             setError(false)
             setStateAuth(true)
-            navigate(from, { replace: true});
             // here 
         } catch (error) {
             setError(error?.response?.data?.message)

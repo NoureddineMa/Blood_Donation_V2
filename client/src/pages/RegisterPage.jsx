@@ -76,7 +76,7 @@ function RegisterPage() {
     
     return (
         <>
-        <a href="#" className="flex font-bold justify-center mb-6 text-2xl font-semibold text-black-600 dark:text-white">
+        <a href="#" className="flex font-bold justify-center mb-6 text-2xl text-black-600 dark:text-white">
                         Sign up
                     </a>
                             <h1 className=" leading-tight tracking-tight text-gray-900  dark:text-white">
@@ -105,7 +105,7 @@ function RegisterPage() {
                                 </div>
                                 <div>
                                     <CustomLabel for="Phone_Number" label="Phone Number" />
-                                    <CustomInput type="Number" name="Phone Number"  placeholder="06 XX XX XX XX"  onChange={handlePhoneNumber} />
+                                    <CustomInput type="phone" name="Phone Number"  placeholder="06 XX XX XX XX"  onChange={handlePhoneNumber} />
                                 </div>
                                 <div>
                                 <CustomLabel for="Roles" label="Register as :" />
