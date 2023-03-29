@@ -5,10 +5,14 @@ const verifyToken = require('../Middlewares/verifyToken')
 
 const {
     CreateRequestDonnateur,
-    DeleteRequestDonnateur
+    DeleteRequestDonnateur,
+    GetAllDonnateurs
 } = require('../Controllers/DonnateurController')
 
-app.post('/Donnateur',verifyToken,CreateRequestDonnateur)
 
+
+app.delete('/DDonnateur/:id',DeleteRequestDonnateur)
+app.post('/Donnateur',verifyToken,CreateRequestDonnateur)
+app.get('/AllDonnateurs', GetAllDonnateurs)
 
 module.exports = app;
