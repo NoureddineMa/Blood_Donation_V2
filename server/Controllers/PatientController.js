@@ -17,11 +17,11 @@ const createRequestPatient = asyncHandler(async(req,res) => {
             }
 
       // Create Request :
-    const RequestPatient = await Donnateur.create({
+    const RequestPatient = await Patient.create({
         First_Name,Second_Name,Email,Adresse,City,Phone_Number,NatureDeSang,DateDeNaissance
     })
 
-    RequestPatient ? res.status(200).json({message: "Request Sent Successfully , Admin should Accept it  !"}) 
+    RequestPatient ? res.status(200).json({message: "Request Sent Successfully ! thank you"}) 
     : res.status(400).json({message: "ERROR , Please try Again !!"})   
 })
 
@@ -40,8 +40,9 @@ const GetAllPatients = asyncHandler(async(req,res) => {
 // @Route DELETE /DPatient/:id
 // @Acces Private
 const DeletePatient = asyncHandler(async(req,res) => {
-    const _id = req.params._id;
-    const checkPatientAndDelete = await Patient.findOneAndDelete({_id})
+    const { id } = req.params
+    console.log(id);
+    const checkPatientAndDelete = await Patient.findOneAndDelete({id})
     checkPatientAndDelete ? res.status(200).json({message: "Patient Deleted Successfully"})
     : res.status(400).json({message: "Error try again ..! thank you"})
 })

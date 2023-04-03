@@ -10,5 +10,9 @@ const {
 } = require('../Controllers/PatientController')
 
 
-app.post('')
-app.get('')
+app.post('/Patient', createRequestPatient)
+app.get('/AllPatients', GetAllPatients)
+app.delete('/DPatient/:id', DeletePatient)
+
+
+module.exports = app;

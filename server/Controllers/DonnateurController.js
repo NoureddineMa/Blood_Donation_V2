@@ -32,8 +32,8 @@ const CreateRequestDonnateur = asyncHandler(async(req,res) => {
 // @ROUTE DELETE /DDonnateur/:id
 // @Acces Private
 const DeleteRequestDonnateur = asyncHandler(async(req,res) => {
-        const _id = req.params.id;
-        const checkDonnateurAndDelete = await Donnateur.findOneAndDelete({_id});
+        const {id} = req.params
+        const checkDonnateurAndDelete = await Donnateur.findOneAndDelete({id});
         checkDonnateurAndDelete ? res.status(200).json({message: "Donnateur Deleted Successfully"})
         : res.status(400).json({message: "Error Try again.. ! thank you"})
 })
