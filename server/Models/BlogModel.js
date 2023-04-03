@@ -2,16 +2,17 @@ const mongoose = require('mongoose')
 
 const BlogsModel = mongoose.Schema({
     Image : {
-        type: String
+        data: Buffer,
+        contentType: String
     },
     Title: {
         type: String
     },
     Date: {
-        type: Date
+        type: String
     },
     Content : {
-        type: Date
+        type: String
     }
 }) 
 
