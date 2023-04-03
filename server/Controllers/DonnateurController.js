@@ -41,7 +41,7 @@ const DeleteRequestDonnateur = asyncHandler(async(req,res) => {
 
 
 // @desc GET ALL DONNATEURS 
-// @ROUTE DELETE /AllDonnateurs
+// @ROUTE GET /AllDonnateurs
 // @Acces Private
 const GetAllDonnateurs = asyncHandler(async (req,res) => {
     const getAllDonnateursIfExist = await Donnateur.find({});
