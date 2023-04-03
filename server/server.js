@@ -7,6 +7,7 @@ const AuthRouter = require('./Routers/AuthRouter')
 const Donnateur = require('./Routers/DonnateurRouter')
 const Patient = require('./Routers/PatientRouter')
 const Message = require('./Routers/ContactUsRouter')
+const Blog = require('./Routers/BlogRouter')
 const PORT = process.env.PORT_APP || 5000
 
 
@@ -19,6 +20,7 @@ app.use('/api/auth', AuthRouter)
 app.use('/api',Donnateur)
 app.use('/api',Patient)
 app.use('/api',Message)
+app.use('/api', Blog)
 app.listen(PORT , () => {
     console.log(`Server Running Under Port : ${PORT}`); 
 })
