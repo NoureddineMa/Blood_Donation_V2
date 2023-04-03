@@ -36,7 +36,6 @@ const GetAllPatients = asyncHandler(async(req,res) => {
 })
 
 
-
 // @Desc DELETE SINGLE PATIENT
 // @Route DELETE /DPatient/:id
 // @Acces Private

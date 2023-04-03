@@ -19,7 +19,7 @@ app.delete('/DDonnateur/:id',DeleteRequestDonnateur)
 app.post('/Donnateur',verifyToken,CreateRequestDonnateur)
 app.get('/AllDonnateurs', GetAllDonnateurs)
 app.get('/AllDonnateurs/noaccepted',GetAllDonnateursNotAccepted)
-app.post('/AllDonnateurs/accept/:id', UpdateStatusDonnateur)
+app.put('/AllDonnateurs/accept/:id', UpdateStatusDonnateur)
 app.get('/AllDonnateurs/Accepted',GetDonnateursAccepte)
 
 module.exports = app;
