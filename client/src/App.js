@@ -8,6 +8,14 @@ import VerifyAccount from "./pages/VerifyAccount";
 import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom'
 import { UserProvider } from "./Context/UserContext";
 import NotFound from "./pages/NotFound";
+// admin
+import LayoutAdmin from "./components/LayoutAdmin";
+import AdminHome from './pages/DashboardAdmin/AdminHome'
+import PatientList from "./pages/DashboardAdmin/PatientList";
+import DonnateurList from "./pages/DashboardAdmin/DonnateurList";
+import BlogPage from "./pages/DashboardAdmin/BlogPage";
+import ProfilePage from "./pages/DashboardAdmin/ProfilePage";
+
 
 
 function App() {
@@ -23,6 +31,17 @@ function App() {
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
         <Route path="/register/verify/:token" element={<VerifyAccount />} />
         </Route>
+
+
+        <Route element={<LayoutAdmin />}>
+            <Route path="/Admin" element={<AdminHome />} />
+            <Route path="/Donnateur" element={<DonnateurList />} />
+            <Route path="/Patient" element={<PatientList />}/>
+            <Route path="/Blog" element={<BlogPage />} />
+            <Route path="/Profile" element={<ProfilePage />}/>
+        </Route>
+
+
         <Route path="*" element={<NotFound />} />
       </Routes>
       </UserProvider>
