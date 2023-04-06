@@ -15,6 +15,7 @@ import PatientList from "./pages/DashboardAdmin/PatientList";
 import DonnateurList from "./pages/DashboardAdmin/DonnateurList";
 import BlogPage from "./pages/DashboardAdmin/BlogPage";
 import ProfilePage from "./pages/DashboardAdmin/ProfilePage";
+import MessagesPage from "./pages/DashboardAdmin/MessagesPage";
 
 
 
@@ -37,6 +38,7 @@ function App() {
             <Route path="/Admin" element={<AdminHome />} />
             <Route path="/Donnateur" element={<DonnateurList />} />
             <Route path="/Patient" element={<PatientList />}/>
+            <Route path="/Messages" element={<MessagesPage />} />
             <Route path="/Blog" element={<BlogPage />} />
             <Route path="/Profile" element={<ProfilePage />}/>
         </Route>
