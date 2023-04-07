@@ -1,24 +1,9 @@
-import React from 'react';
-import { useState , useEffect } from 'react';
+import React from 'react'
 
-
-
-function DonnateurList() {
-
-  
-
-
-
-  return (
-    <div>
-      <div style={{ marginLeft: '2rem', marginRight: '2rem' }}>
-        <h1 className='text-3xl font-bold mb-2'>List des Donnateurs</h1>
-        <small>
-          Pour accepter une demande de donateur, vous devez appuyer sur le bouton vert qui se trouve sur la page correspondante. Une fois que vous aurez appuyé sur ce bouton, la demande sera acceptée et le patient pourra voir les informations du donnateur.
-        </small>
-
-
-        <div class="overflow-x-auto rounded-lg border border-gray-200 mt-5 ">
+function ListPatient() {
+    return (
+        <>
+              <div class="overflow-x-auto rounded-lg border border-gray-200 mt-5 ">
           <table class="min-w-full divide-y-2 divide-gray-200 text-sm">
             <thead>
               <tr>
@@ -62,39 +47,19 @@ function DonnateurList() {
 
             <tbody class="divide-y divide-gray-200">
               <tr>
-                <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                  John Doe
-                </td>
+                <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">John Doe</td>
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">24/05/1995</td>
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">Web Developer</td>
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">$120,000</td>
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">$120,000</td>
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">$120,000</td>
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">$120,000</td>
-                <td class="whitespace-nowrap px-4 py-2">
-                  <a
-                    href="#"
-                    class="inline-block rounded bg-green-600 px-4 py-2 text-xs font-medium text-white"
-                  >
-                    Acceptez
-                  </a>
-                </td>
-                <td class="whitespace-nowrap px-4 py-2">
-                  <a
-                    href="#"
-                    class="inline-block rounded bg-red-600 px-4 py-2 text-xs font-medium text-white"
-                  >
-                    Refusez
-                  </a>
-                </td>
               </tr>
             </tbody>
           </table>
         </div>
-
-      </div>
-    </div>
-  )
+        </>
+    )   
 }
 
-export default DonnateurList
+export default ListPatient

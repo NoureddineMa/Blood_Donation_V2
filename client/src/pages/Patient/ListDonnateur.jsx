@@ -1,24 +1,9 @@
-import React from 'react';
-import { useState , useEffect } from 'react';
+import React from 'react'
 
-
-
-function DonnateurList() {
-
-  
-
-
-
-  return (
-    <div>
-      <div style={{ marginLeft: '2rem', marginRight: '2rem' }}>
-        <h1 className='text-3xl font-bold mb-2'>List des Donnateurs</h1>
-        <small>
-          Pour accepter une demande de donateur, vous devez appuyer sur le bouton vert qui se trouve sur la page correspondante. Une fois que vous aurez appuyé sur ce bouton, la demande sera acceptée et le patient pourra voir les informations du donnateur.
-        </small>
-
-
-        <div class="overflow-x-auto rounded-lg border border-gray-200 mt-5 ">
+function ListDonnateur() {
+    return (
+        <>
+              <div class="overflow-x-auto rounded-lg border border-gray-200 mt-5 ">
           <table class="min-w-full divide-y-2 divide-gray-200 text-sm">
             <thead>
               <tr>
@@ -91,10 +76,8 @@ function DonnateurList() {
             </tbody>
           </table>
         </div>
-
-      </div>
-    </div>
-  )
+        </>
+    )
 }
 
-export default DonnateurList
+export default ListDonnateur

@@ -2,7 +2,7 @@ const UserModel = require('../Models/UserModel')
 const RoleModel = require('../Models/RoleModel')
 const connectDB = require('./dbConfig')
 const bcrypt = require("bcryptjs")
-const roles = process.env.ROLES.split(',')
+const roles = process.env.ROLES?.split(',')
 const defaultUser  = {
     First_Name : process.env.DEFAULT_USER_FIRST_NAME,
     Second_Name: process.env.DEFAULT_USER_LAST_NAME,

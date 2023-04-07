@@ -6,24 +6,9 @@ function AdminHome() {
       <div className='flex flex-row px-7'>
       <a
   href="#"
-  class="relative block rounded-sm border-t-4 border-pink-600 p-4 shadow-xl sm:p-6 lg:p-8"
+  class="relative block rounded-sm border-t-4 mx-2 border-red-600 p-4 shadow-xl sm:p-6 lg:p-8"
 >
   <div class="flex items-center gap-4">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="h-6 w-6 text-pink-600 sm:h-8 sm:w-8"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M13 10V3L4 14h7v7l9-11h-7z"
-      />
-    </svg>
-
     <h3 class="text-3xl font-bold sm:text-4xl">100+</h3>
   </div>
 
@@ -35,24 +20,9 @@ function AdminHome() {
 
       <a
         href="#"
-        class="relative block rounded-sm border-t-4 border-pink-600 p-4 shadow-xl sm:p-6 lg:p-8"
+        class="relative block rounded-sm border-t-4 mx-2 border-[#009FBD] p-4 shadow-xl sm:p-6 lg:p-8"
       >
         <div class="flex items-center gap-4">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 text-pink-600 sm:h-8 sm:w-8"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M13 10V3L4 14h7v7l9-11h-7z"
-            />
-          </svg>
-
           <h3 class="text-3xl font-bold sm:text-4xl">100+</h3>
         </div>
 
@@ -64,24 +34,9 @@ function AdminHome() {
 
     <a
       href="#"
-      class="relative block rounded-sm border-t-4 border-pink-600 p-4 shadow-xl sm:p-6 lg:p-8"
+      class="relative block rounded-sm border-t-4 mx-2 border-[#FF8400] p-4 shadow-xl sm:p-6 lg:p-8"
     >
       <div class="flex items-center gap-4">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6 text-pink-600 sm:h-8 sm:w-8"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13 10V3L4 14h7v7l9-11h-7z"
-          />
-        </svg>
-
         <h3 class="text-3xl font-bold sm:text-4xl">100+</h3>
       </div>
 
@@ -93,24 +48,9 @@ function AdminHome() {
 
     <a
       href="#"
-      class="relative block rounded-sm border-t-4 border-pink-600 p-4 shadow-xl sm:p-6 lg:p-8"
+      class="relative block rounded-sm border-t-4 mx-2 border-[#27E1C1] p-4 shadow-xl sm:p-6 lg:p-8"
     >
       <div class="flex items-center gap-4">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6 text-pink-600 sm:h-8 sm:w-8"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13 10V3L4 14h7v7l9-11h-7z"
-          />
-        </svg>
-
         <h3 class="text-3xl font-bold sm:text-4xl">100+</h3>
       </div>
 
