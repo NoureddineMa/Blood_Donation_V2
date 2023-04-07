@@ -10,17 +10,15 @@ function PageDonnateur() {
     <div>
         <Navbar />
         <div className=' max-w-screen-xl mx-auto mt-11'>
-        <div className='flex flex-col lg:flex-row justify-evenly'>
+        <div className='flex flex-col lg:flex-row justify-around'>
              <Card 
                 svg= {Donate} 
-                title="Sauvez des millers de personnes" 
-                content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae deleniti ad illo fuga fugit impedit recusandae obcaecati laborum, sequi inventore, ut accusamus itaque a, sunt nemo nisi minima exercitationem hic?" 
+                content="Le don de sang est un acte de générosité qui peut sauver des vies. Remplissez notre formulaire en cliquant ici." 
                 button="Remplir le formulaire"
               />
              <Card 
                 svg= {Contact} 
-                title="Contactez nous" 
-                content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae deleniti ad illo fuga fugit impedit recusandae obcaecati laborum, sequi inventore, ut accusamus itaque a, sunt nemo nisi minima exercitationem hic?" 
+                content="Contactez-moi pour discuter de vos besoins et de la façon dont je peux vous aider à atteindre vos objectifs." 
                 button="Contactez nous"
              />
         </div>

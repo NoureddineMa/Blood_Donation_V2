@@ -8,7 +8,7 @@ const Navbar = () => {
                     <div class="flex items-center justify-between gap-4 lg:gap-10">
                         <div class="flex lg:w-0 lg:flex-1">
                             <a href="#">
-                                <h2 className='text-red-800 font-bold'>Blood Donation</h2>
+                                <h2 className='text-red-700 font-bold'>Blood Donation</h2>
                             </a>
                         </div>
 
@@ -24,7 +24,7 @@ const Navbar = () => {
 
                         <div class="hidden flex-1 items-center justify-end gap-4 sm:flex">
                             <a
-                                class="rounded-lg bg-red-600 px-5 py-2 text-sm font-medium text-white"
+                                class="rounded-lg bg-red-700 px-5 py-2 text-sm font-medium text-white"
                                 href=""
                             >
                                 Contactez Nous

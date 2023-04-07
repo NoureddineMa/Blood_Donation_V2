@@ -30,6 +30,14 @@ export async function ChangePwd(id,oldPassword,newPassword){
     const res = await Api.post(`/auth/changepassword/${id}`,oldPassword, {password: newPassword})
     return res.data
 }
-
+// GET ALL PATIENTS:
+export async function GetAllPatients(token){
+    const res = await Api.get('/AllPatients' , {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    return res.data
+}
 
 

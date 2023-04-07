@@ -15,4 +15,4 @@ const PatientMiddelware = asyncHandler(async (req, res, next) => {
     next()
 })
 
-module.exports = PatientMiddelware    
+module.exports = PatientMiddelware
