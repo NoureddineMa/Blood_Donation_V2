@@ -18,6 +18,8 @@ import ProfilePage from "./pages/DashboardAdmin/ProfilePage";
 import MessagesPage from "./pages/DashboardAdmin/MessagesPage";
 // Donnateur 
 import PageDonnateur from "./pages/Donnateur/PageDonnateur";
+import FormContactus from "./pages/Donnateur/FormContactus";
+import FormDonnateur from "./pages/Donnateur/FormDonnateur";
 
 
 
@@ -49,6 +51,8 @@ function App() {
         {/* Layout Donnateur */}
         <Route>
             <Route path="/donnateurpage" element={<PageDonnateur />} />
+            <Route path="/FormDonnateur" element={<FormDonnateur />} />
+            <Route path="/ContactDonnateur" element={<FormContactus />} />
         </Route>
 
 

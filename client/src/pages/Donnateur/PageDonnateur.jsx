@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import Navbar from '../../components/compnentsDonnateur/Navbar'
 import Card from '../../components/Card'
 import Contact from '../../Assets/images/contact.png'
@@ -6,6 +7,17 @@ import Donate from '../../Assets/images/give.png'
 import ListPatient from './ListPatient'
 
 function PageDonnateur() {
+
+  const nav = useNavigate()
+
+  const Donation = () => {
+    nav('/FormDonnateur')
+  }
+  const ContactDonnateur = () => {
+    nav('/ContactDonnateur')
+  }
+
+
   return (
     <div>
         <Navbar />
@@ -15,11 +27,13 @@ function PageDonnateur() {
                 svg= {Donate} 
                 content="Le don de sang est un acte de générosité qui peut sauver des vies. Remplissez notre formulaire en cliquant ici." 
                 button="Remplir le formulaire"
+                onClick={Donation}
               />
              <Card 
                 svg= {Contact} 
                 content="Contactez-moi pour discuter de vos besoins et de la façon dont je peux vous aider à atteindre vos objectifs." 
                 button="Contactez nous"
+                onClick={ContactDonnateur}
              />
         </div>
         <div className=''>

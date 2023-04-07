@@ -39,5 +39,9 @@ export async function GetAllPatients(token){
     })
     return res.data
 }
-
+// POST FORM CONTACT
+export async function PostForm(Msg){
+    const res = await Api.post('/message',Msg)
+    return res.data
+}
 

@@ -1,6 +1,8 @@
 import React from 'react' 
 
-const Navbar = () => {
+const Navbar = (props) => {
+
+  
     return (
         <>
             <header aria-label="Site Header" class="shadow-sm">
@@ -23,7 +25,8 @@ const Navbar = () => {
                         </nav>
 
                         <div class="hidden flex-1 items-center justify-end gap-4 sm:flex">
-                            <a
+                            <a  
+                                onClick={props.onClick}
                                 class="rounded-lg bg-red-700 px-5 py-2 text-sm font-medium text-white"
                                 href=""
                             >

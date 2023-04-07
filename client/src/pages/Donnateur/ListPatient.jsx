@@ -26,7 +26,7 @@ function ListPatient() {
 
     return (
         <>
-              <div class="overflow-x-auto rounded-lg border border-gray-200 mt-5 ">
+              <div class="overflow-x-auto rounded-lg border border-gray-200 my-5 ">
           <table class="min-w-full divide-y-2 divide-gray-200 text-sm">
             <thead>
               <tr>
@@ -79,10 +79,10 @@ function ListPatient() {
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">{apartem.Second_Name}</td>
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">{apartem.Email}</td>
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">{apartem.Adresse}</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{apartem.City}</td>
+                <td class="whitespace-nowrap px-4 py-2 text-red-600">{apartem.City}</td>
                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">{apartem.Phone_Number}</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{apartem.NatureDeSang}</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{apartem.DateDeNaissance}</td>
+                <td class="whitespace-nowrap px-4 py-2 text-red-600">{apartem.NatureDeSang}</td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{apartem.DateDeNaissance.slice(0,10)}</td>
               </tr>
             </tbody>))}
           </table>
