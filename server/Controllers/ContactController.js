@@ -13,7 +13,7 @@ const CreateMessage = asyncHandler(async(req,res) => {
     }
     // Create Request : 
     const Requestmsg = await Contact.create({First_Name,Last_Name,Email,Contexte,Message})
-    Requestmsg ? res.status(200).json({message:"Message sent Succesfully ! thank you"})
+    Requestmsg ? res.status(200).json({message:"Message Bien envoyé , Merci !"})
     : res.status(400).json({message:"ERROR , please try Again !!"})
 })
 

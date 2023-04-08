@@ -40,7 +40,7 @@ function FormContact() {
     // function In case Notifu succes 
     function notify(){
         toast.success('Message Envoyé Avec Succes', {
-            position: "top-center",
+            position: "bottom-right",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -50,11 +50,10 @@ function FormContact() {
             theme: "light",
             });
         }
-
     // function in case Notify Error
     function notifyerr(){
         toast.error('Merci de reessayez plus tard !', {
-            position: "top-center",
+            position: "bottom-right",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,

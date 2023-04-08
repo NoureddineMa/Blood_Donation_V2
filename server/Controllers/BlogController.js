@@ -34,7 +34,7 @@ const GetAllBlogs = asyncHandler(async(req,res) => {
 
 
 
-//@Desc PUT SINGLE BLOG
+//@Desc PUT SINGLE BLOG,
 //@Route POST /PBlog/:id
 //@Acces Private
 const UpdateBlog = asyncHandler(async(req,res) => {
