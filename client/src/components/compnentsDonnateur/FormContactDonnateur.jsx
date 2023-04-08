@@ -52,7 +52,7 @@ function FormContact() {
         }
     // function in case Notify Error
     function notifyerr(){
-        toast.error('Merci de reessayez plus tard !', {
+        toast.error('Un erreur est Survenue , Merci de reessayez plus tard !', {
             position: "bottom-right",
             autoClose: 5000,
             hideProgressBar: false,
