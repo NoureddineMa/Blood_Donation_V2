@@ -44,4 +44,13 @@ export async function PostForm(Msg){
     const res = await Api.post('/message',Msg)
     return res.data
 }
+// POST REQUEST AS DONNATEUR 
+export async function PostReq(Data,token){
+    const res = await Api.post('/Donnateur',Data , {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    return res.data
+}
 
