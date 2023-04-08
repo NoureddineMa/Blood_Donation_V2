@@ -1,18 +1,16 @@
-import React from 'react' 
+import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Navbar = () => {
-
-  
-    return (
-        <>
+function NavbarPatient() {
+  return (
+    <>
             <header aria-label="Site Header" class="shadow-sm">
                 <div class="mx-auto max-w-screen-xl p-4">
                     <div class="flex items-center justify-between gap-4 lg:gap-10">
                         <div class="flex lg:w-0 lg:flex-1">
                             <Link to="/">
-                                <h2 className='text-red-700 font-bold'>Blood Donation</h2>
-                            </Link>
+                            <h2 className='text-red-700 font-bold'>Blood Donation</h2>
+                           </Link>
                         </div>
 
                         <nav
@@ -23,6 +21,7 @@ const Navbar = () => {
                             <Link className="text-gray-500 hover:text-red-600"to="/pubs">Publications</Link>
                             <Link className="text-gray-500 hover:text-red-600"to="/">Se Déconnecter</Link>
                         </nav>
+
 
                         <div class="lg:hidden">
                             <button class="rounded-lg bg-gray-100 p-2 text-gray-600" type="button">
@@ -48,7 +47,7 @@ const Navbar = () => {
                 </div>
             </header>
         </>
-    )
+  )
 }
 
-export default Navbar
+export default NavbarPatient

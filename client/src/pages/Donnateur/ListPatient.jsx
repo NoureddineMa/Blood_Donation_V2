@@ -1,6 +1,5 @@
 import React from 'react'
 import  { GetAllPatients } from '../../Utils/Requests'
-import axios from 'axios'
 import { useEffect , useState } from 'react'
 
 function ListPatient() {
@@ -72,17 +71,17 @@ function ListPatient() {
                 </th>
               </tr>
             </thead>
-            {Patient.map((apartem) => (
+            {Patient.map((patie) => (
             <tbody class="divide-y divide-gray-200">
               <tr>
-                <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{apartem.First_Name}</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{apartem.Second_Name}</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{apartem.Email}</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{apartem.Adresse}</td>
-                <td class="whitespace-nowrap px-4 py-2 text-red-600">{apartem.City}</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{apartem.Phone_Number}</td>
-                <td class="whitespace-nowrap px-4 py-2 text-red-600">{apartem.NatureDeSang}</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{apartem.DateDeNaissance.slice(0,10)}</td>
+                <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{patie.First_Name}</td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{patie.Second_Name}</td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{patie.Email}</td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{patie.Adresse}</td>
+                <td class="whitespace-nowrap px-4 py-2 text-red-600">{patie.City}</td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{patie.Phone_Number}</td>
+                <td class="whitespace-nowrap px-4 py-2 text-red-600">{patie.NatureDeSang}</td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{patie.DateDeNaissance.slice(0,10)}</td>
               </tr>
             </tbody>))}
           </table>

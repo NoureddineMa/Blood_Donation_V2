@@ -20,6 +20,12 @@ import MessagesPage from "./pages/DashboardAdmin/MessagesPage";
 import PageDonnateur from "./pages/Donnateur/PageDonnateur";
 import FormContactus from "./pages/Donnateur/FormContactus";
 import FormDonnateur from "./pages/Donnateur/FormDonnateur";
+// Patient 
+import PagePatient from './pages/Patient/PagePatient'
+import FormContactusPatient from './pages/Patient/FormContactusPatient'
+import FormPatient from './pages/Patient/FormPatient'
+// Publications 
+import Publications from './components/Publications'
 
 
 
@@ -53,6 +59,18 @@ function App() {
             <Route path="/donnateurpage" element={<PageDonnateur />} />
             <Route path="/FormDonnateur" element={<FormDonnateur />} />
             <Route path="/ContactDonnateur" element={<FormContactus />} />
+        </Route>
+
+
+        {/* Layout Patient  */}
+        <Route>
+            <Route path="/patientpage" element={<PagePatient />} />
+            <Route path="/formPatient" element={<FormPatient />} />
+            <Route path="/ContactPatient" element={<FormContactusPatient />} />
+        </Route>
+
+        <Route>
+            <Route path="/pubs" element={<Publications />} />
         </Route>
 
 

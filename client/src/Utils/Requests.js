@@ -53,4 +53,22 @@ export async function PostReq(Data,token){
     })
     return res.data
 }
+// Get All Donnateurs ACCEPTED : 
+export async function GetAllDonnateurs(token){
+    const res = await Api.get('/AllDonnateurs/Accepted' , {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    return res.data
+}
+// POST REQ AS PATIENT : 
+export async function PostReqPatient(Data,token){
+    const res = await Api.post('/Patient', Data , {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    return res.data
+}
 

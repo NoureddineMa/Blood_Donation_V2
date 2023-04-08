@@ -65,7 +65,7 @@ const GetAllDonnateursNotAccepted = asyncHandler(async(req,res) => {
 // @Route GET /AllDonnateurs/Accepted
 // @Acces Private 
 const GetDonnateursAccepte = asyncHandler(async(req,res) => {
-    const getAcceptedDonnations = await Donnateur.find({ Status : "Accepted"})
+    const getAcceptedDonnations = await Donnateur.find({ Status : "ACCEPTED"})
     getAcceptedDonnations ? res.status(200).json(getAcceptedDonnations) : res.status(200).json({message: "0 Requests in this moment"})
 })
 

@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const verifyToken = require('../Middlewares/verifyToken')
 const verifyRole = require('../Middlewares/DonnateurMiddelware')
+const patientRole = require('../Middlewares/PatientMiddelware')
 
 
 const {
@@ -15,11 +16,11 @@ const {
 
 
 
-app.delete('/DDonnateur/:id',verifyToken,verifyRole,DeleteRequestDonnateur)
-app.post('/Donnateur',verifyToken,verifyRole,CreateRequestDonnateur)
-app.get('/AllDonnateurs',verifyToken,verifyRole,GetAllDonnateurs)
-app.get('/AllDonnateurs/noaccepted',verifyToken,verifyRole,GetAllDonnateursNotAccepted)
+app.delete('/DDonnateur/:id',verifyToken,DeleteRequestDonnateur)
+app.post('/Donnateur',verifyToken,CreateRequestDonnateur)
+app.get('/AllDonnateurs',verifyToken,GetAllDonnateurs)
+app.get('/AllDonnateurs/noaccepted',verifyToken,GetAllDonnateursNotAccepted)
 app.put('/AllDonnateurs/accept/:id',verifyToken,verifyRole,UpdateStatusDonnateur)
-app.get('/AllDonnateurs/Accepted',verifyToken,verifyRole,GetDonnateursAccepte)
+app.get('/AllDonnateurs/Accepted',verifyToken,GetDonnateursAccepte)
 
 module.exports = app;
