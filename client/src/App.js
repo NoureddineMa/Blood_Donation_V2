@@ -26,15 +26,14 @@ import FormContactusPatient from './pages/Patient/FormContactusPatient'
 import FormPatient from './pages/Patient/FormPatient'
 // Publications 
 import Publications from './components/Publications'
-
-
+// Require Auth 
+import RequireAuth from "./Utils/RequireAuth";
 
 function App() {
   return (
     <Router>
       <UserProvider>
       <Routes>
-        <Route path='/' element={<LandingPage />} />
         <Route element={<LayoutAuth />}  >
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -42,7 +41,6 @@ function App() {
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
         <Route path="/register/verify/:token" element={<VerifyAccount />} />
         </Route>
-
 
         <Route element={<LayoutAdmin />}>
             <Route path="/Admin" element={<AdminHome />} />
@@ -67,7 +65,7 @@ function App() {
             <Route path="/patientpage" element={<PagePatient />} />
             <Route path="/formPatient" element={<FormPatient />} />
             <Route path="/ContactPatient" element={<FormContactusPatient />} />
-        </Route>
+      </Route>
 
         <Route>
             <Route path="/pubs" element={<Publications />} />

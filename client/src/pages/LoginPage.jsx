@@ -2,7 +2,7 @@ import React from 'react'
 import CustomButton from '../components/CustomButton'
 import CustomInput from '../components/CustomInput'
 import CustomLabel from '../components/CustomLabel'
-import { Link , useNavigate , useLocation } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import Alert from '../Utils/Alert'
 import { login } from '../Utils/Requests'
 import { useState, useContext } from 'react';
@@ -13,7 +13,7 @@ function LoginPage() {
 
     const navigate = useNavigate()
     const location = useLocation()
-   
+
 
     const { setUser } = useContext(UserContext);
 
@@ -22,7 +22,7 @@ function LoginPage() {
     const [error, setError] = useState(false)
     const [msg, setMsg] = useState()
     const [stateAuth, setStateAuth] = useState(false)
-    
+
     const handleEmail = (e) => {
         return setEmail(e.target.value)
     }
@@ -40,16 +40,27 @@ function LoginPage() {
             const data = await login(user)
             setUser(data.user);
             localStorage.setItem("token", data?.token)
-            localStorage.setItem("nameRole", data?.nameRole )
+            localStorage.setItem("nameRole", data?.nameRole)
             localStorage.setItem("Email", data?.user?.Email)
             setMsg("Authentication Success ...")
             setError(false)
             setStateAuth(true)
+            if (data?.nameRole === 'Admin') {
+                navigate('/Admin');
+            } else if (data?.nameRole === 'Patient') {
+                navigate('/patientpage');
+            } else if (data?.nameRole === 'Donnateur') {
+                navigate('/donnateurpage');
+            } else {
+                navigate('/login');
+            }
             // here 
         } catch (error) {
             setError(error?.response?.data?.message)
         }
     }
+
+
     return (
         <>
             <h1 className=" flex justify-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
