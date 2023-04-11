@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState , useEffect } from 'react'
-import { AllPatients } from '../../Utils/Requests'
+import { AllPatients , DeletePatient } from '../../Utils/Requests';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function PatientList() {
 
@@ -12,7 +14,6 @@ function PatientList() {
   useEffect(() => {
     try {
      AllPatients(token).then((data) => {
-      console.log(data);
         setPatient(data)
      }).catch((err) => {
         console.log(err);
@@ -22,6 +23,48 @@ function PatientList() {
     }
   }, [])
 
+
+  // delete patient 
+  const Supprimer = (id) => {
+    try {
+      DeletePatient(id, token).then(() => {
+        let res = patient.filter((pat) => pat._id !== id)
+        setPatient(res)
+        notify()
+      }).catch((err) => {
+        notifyerr()
+      })
+    } catch (error) {
+        notifyerr()
+    }
+  }
+
+   // function In case Notifu succes 
+   function notify() {
+    toast.success('Patient Supprimer Avec Succés', {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  }
+  // function in case Notify Error
+  function notifyerr() {
+    toast.error('Un erreur est Survenue , Merci de reessayez plus tard !', {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  }
 
   return (
     <div>
@@ -89,8 +132,9 @@ function PatientList() {
                   <td class="whitespace-nowrap px-4 py-2 text-gray-700">{patient.DateDeNaissance?.slice(0, 10)}</td>                 
                   <td class="whitespace-nowrap px-4 py-2">
                     <button
+                      onClick={() => { Supprimer(patient._id)}}
                       class="inline-block rounded bg-red-600 px-4 py-2 text-xs font-medium text-white"
-                    >Refusez</button>
+                    >Supprimer</button>
                   </td>
                 </tr>
               </tbody>)) : <div className='flex flex-col lg:flex-col justify-center items-center'>
@@ -101,6 +145,7 @@ function PatientList() {
       </div>
 
     </div>
+    <ToastContainer position="bottom-right" />
     </div>
   )
 }

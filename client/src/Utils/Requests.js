@@ -108,3 +108,11 @@ export async function AllPatients(token){
     })
     return res.data
 }
+// Delete Patient :
+export async function DeletePatient(id,token){
+    const res = await Api.delete(`/DPatient/${id}` , {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+}
