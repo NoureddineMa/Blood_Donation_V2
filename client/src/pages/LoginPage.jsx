@@ -8,7 +8,6 @@ import { login } from '../Utils/Requests'
 import { useState, useContext } from 'react';
 import UserContext from '../Context/UserContext'
 
-
 function LoginPage() {
 
     const navigate = useNavigate()
@@ -45,15 +44,7 @@ function LoginPage() {
             setMsg("Authentication Success ...")
             setError(false)
             setStateAuth(true)
-            if (data?.nameRole === 'Admin') {
-                navigate('/Admin');
-            } else if (data?.nameRole === 'Patient') {
-                navigate('/patientpage');
-            } else if (data?.nameRole === 'Donnateur') {
-                navigate('/donnateurpage');
-            } else {
-                navigate('/login');
-            }
+           
             // here 
         } catch (error) {
             setError(error?.response?.data?.message)

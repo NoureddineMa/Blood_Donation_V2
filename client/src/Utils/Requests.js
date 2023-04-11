@@ -53,8 +53,17 @@ export async function PostReq(Data,token){
     })
     return res.data
 }
-// Get All Donnateurs ACCEPTED : 
+// Gey All Donnateur : 
 export async function GetAllDonnateurs(token){
+    const res = await Api.get('/AllDonnateurs', {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    return res.data
+}
+// Get All Donnateurs ACCEPTED : 
+export async function GetAllDonnateursAccepted(token){
     const res = await Api.get('/AllDonnateurs/Accepted' , {
         headers: {
             'Authorization': `Bearer ${token}`
@@ -71,4 +80,31 @@ export async function PostReqPatient(Data,token){
     })
     return res.data
 }
+// DELETE DONNATEUR 
+export async function DeleteDonnateur(id,token){
+    const res = await Api.delete(`/DDonnateur/${id}`,  {
+        headers :{
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    return res.data
+}
+// ACCEPT DONNNATEUR
+export async function AcceptDonnateur(id,token){
+    const res = await Api.put(`/AllDonnateurs/accept/${id}`, {
+        headers :{
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    return res.data
+}
 
+// GET ALL PATIENTS :
+export async function AllPatients(token){
+    const res = await Api.get('/AllPatients' , {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    return res.data
+}

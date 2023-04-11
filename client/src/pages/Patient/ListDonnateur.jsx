@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect , useState } from 'react'
-import { GetAllDonnateurs } from '../../Utils/Requests'
+import { GetAllDonnateursAccepted } from '../../Utils/Requests'
 
 
 function ListDonnateur() {
@@ -13,7 +13,7 @@ function ListDonnateur() {
     //
     useEffect(() => {
        try {
-        GetAllDonnateurs(token).then((data) => {
+        GetAllDonnateursAccepted(token).then((data) => {
            console.log(data)
            setDonnateur(data)
          }).catch((err) => {
