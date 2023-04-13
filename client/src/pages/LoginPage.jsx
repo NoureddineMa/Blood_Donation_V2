@@ -2,7 +2,7 @@ import React from 'react'
 import CustomButton from '../components/CustomButton'
 import CustomInput from '../components/CustomInput'
 import CustomLabel from '../components/CustomLabel'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Alert from '../Utils/Alert'
 import { login } from '../Utils/Requests'
 import { useState, useContext } from 'react';
@@ -44,11 +44,11 @@ function LoginPage() {
             setStateAuth(true)
             const role = data?.nameRole
             setTimeout(() => {
-                if(role == "Admin"){
+                if(role === "Admin"){
                     navigate('/Admin')
-                } else if (role == "Donnateur"){
+                } else if (role === "Donnateur"){
                     navigate('/donnateurpage')
-                } else if (role == "Patient"){
+                } else if (role === "Patient"){
                     navigate('/patientpage')
                 } else {
                     navigate('/')

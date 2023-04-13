@@ -1,8 +1,11 @@
 import React from 'react'
+import HeroSection from '../components/componentlandingpage/HeroSection'
 
 function LandingPage() {
   return (
-    <div>this Layout is just for Landing Page</div>
+    <>
+    <HeroSection />
+    </>
   )
 }
 
