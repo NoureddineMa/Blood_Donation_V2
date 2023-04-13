@@ -6,7 +6,8 @@ import LayoutAuth from "./pages/LayoutAuth";
 import LandingPage from "./pages/LandingPage";
 import VerifyAccount from "./pages/VerifyAccount";
 import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom'
-import { UserProvider } from "./Context/UserContext";
+import { UserProvider } from "./hooks/UserContext";
+import { RoleProvider } from "./hooks/RoleContext";
 import NotFound from "./pages/NotFound";
 // admin
 import LayoutAdmin from "./components/LayoutAdmin";
@@ -30,6 +31,7 @@ function App() {
   return (
     <Router>
       <UserProvider>
+      <RoleProvider>
       <Routes>
         <Route element={<LayoutAuth />}  >
         <Route path="/register" element={<RegisterPage />} />
@@ -63,6 +65,7 @@ function App() {
       </Route>
       </Route>
       </Routes>
+      </RoleProvider>
       </UserProvider>
     </Router>
   );

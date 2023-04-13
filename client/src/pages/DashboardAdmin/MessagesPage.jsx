@@ -111,10 +111,10 @@ function MessagesPage() {
               {messages?.length > 0 ? messages?.map((messages) => (
               <tbody class="divide-y divide-gray-200">
                 <tr>
-                  <td class="whitespace-nowrap  py-2 text-gray-700">{messages.First_Name}</td>
-                  <td class="whitespace-nowrap  py-2 text-gray-700">{messages.Second_Name}</td>
-                  <td class="whitespace-nowrap  py-2 text-gray-700">{messages.Email}</td>
-                  <td class="whitespace-nowrap  py-2 text-gray-700">{messages.Contexte}</td>
+                  <td class="whitespace-nowrap px-3  py-2 text-gray-700">{messages.First_Name}</td>
+                  <td class="whitespace-nowrap px-3  py-2 text-gray-700">{messages.Last_Name}</td>
+                  <td class="whitespace-nowrap px-3  py-2 text-gray-700">{messages.Email}</td>
+                  <td class="whitespace-nowrap px-3  py-2 text-gray-700">{messages.Contexte}</td>
                   <td class="whitespace-nowrap px-4 py-2 text-gray-700">{messages.Message}</td>                 
                   <td class="whitespace-nowrap px-4 py-2">
                     <button
