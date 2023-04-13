@@ -18,7 +18,7 @@ function NavbarPatient() {
                             aria-label="Site Nav"
                             class="hidden gap-8 text-sm font-medium md:flex"
                         >
-                            <Link className="text-gray-500 hover:text-red-600"><Logout /></Link>
+                            <Logout />
                         </nav>
 
 
