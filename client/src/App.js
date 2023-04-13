@@ -24,10 +24,8 @@ import FormDonnateur from "./pages/Donnateur/FormDonnateur";
 import PagePatient from './pages/Patient/PagePatient'
 import FormContactusPatient from './pages/Patient/FormContactusPatient'
 import FormPatient from './pages/Patient/FormPatient'
-// Publications 
-import Publications from './components/Publications'
-// Require Auth 
-import RequireAuth from "./Utils/RequireAuth";
+// isLoggedIn
+import IsLoggedIn from './Utils/IsLoggedIn'
 
 function App() {
   return (
@@ -41,8 +39,11 @@ function App() {
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
         <Route path="/register/verify/:token" element={<VerifyAccount />} />
         </Route>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="*" element={<NotFound />} />
 
-        <Route element={<LayoutAdmin />}>
+        <Route element={ <IsLoggedIn />} >
+        <Route element={<LayoutAdmin />} >
             <Route path="/Admin" element={<AdminHome />} />
             <Route path="/Donnateur" element={<DonnateurList />} />
             <Route path="/Patient" element={<PatientList />}/>
@@ -50,29 +51,19 @@ function App() {
             <Route path="/Blog" element={<BlogPage />} />
             <Route path="/Profile" element={<ProfilePage />}/>
         </Route>
-
-
         {/* Layout Donnateur */}
         <Route>
             <Route path="/donnateurpage" element={<PageDonnateur />} />
             <Route path="/FormDonnateur" element={<FormDonnateur />} />
             <Route path="/ContactDonnateur" element={<FormContactus />} />
         </Route>
-
-
         {/* Layout Patient  */}
         <Route>
             <Route path="/patientpage" element={<PagePatient />} />
             <Route path="/formPatient" element={<FormPatient />} />
             <Route path="/ContactPatient" element={<FormContactusPatient />} />
       </Route>
-
-        <Route>
-            <Route path="/pubs" element={<Publications />} />
-        </Route>
-
-
-        <Route path="*" element={<NotFound />} />
+      </Route>
       </Routes>
       </UserProvider>
     </Router>

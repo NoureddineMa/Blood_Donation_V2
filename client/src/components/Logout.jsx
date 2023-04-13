@@ -3,15 +3,15 @@ import { useNavigate } from 'react-router-dom'
 
 function Logout() {
 
-  const navigate = useNavigate()
+    const nav = useNavigate()
 
+    function handleLogout() {
+      localStorage.clear()
+      nav('/')
+    }
 
-  const logout = () => {
-    localStorage.clear()
-    navigate('/')
-  }
   return (
-    <button onClick={logout} className="mx-4 text-sm font-normal">Logout</button>
+    <button onClick={handleLogout} className="mx-4 text-sm font-normal">Logout</button>
   )
 }
 
