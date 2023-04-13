@@ -24,8 +24,6 @@ function ListDonnateur() {
        }
     }, [])
 
-
-
     return (
         <>
                <>
@@ -75,17 +73,17 @@ function ListDonnateur() {
                 </th>
               </tr>
             </thead>
-            {Donnateur.map((patie) => (
+            {Donnateur.map((donn) => (
             <tbody class="divide-y divide-gray-200">
               <tr>
-                <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{patie.First_Name}</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{patie.Second_Name}</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{patie.Email}</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{patie.Adresse}</td>
-                <td class="whitespace-nowrap px-4 py-2 text-red-600">{patie.City}</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{patie.Phone_Number}</td>
-                <td class="whitespace-nowrap px-4 py-2 text-red-600">{patie.NatureDeSang}</td>
-                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{patie.DateDeNaissance.slice(0,10)}</td>
+                <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{donn.First_Name}</td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{donn.Second_Name}</td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{donn.Email}</td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{donn.Adresse}</td>
+                <td class="whitespace-nowrap px-4 py-2 text-red-600">{donn.City}</td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{donn.Phone_Number}</td>
+                <td class="whitespace-nowrap px-4 py-2 text-red-600">{donn.NatureDeSang}</td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">{donn.DateDeNaissance.slice(0,10)}</td>
               </tr>
             </tbody>))}
           </table>

@@ -1,19 +1,28 @@
-import React from 'react'
+import React , { useContext} from 'react'
 import Logo from '../Assets/images/BloodDonation.png'
 import { Link } from 'react-router-dom'
 import Logout from './Logout'
-import { useState } from 'react'
+import UserContext from '../Context/UserContext'
+import Admin from '../Assets/images/maher.jpg'
 
 const SideBar = () => {
 
+    const { user } = useContext(UserContext)
+    console.log(user);
 
     return (
         <>
           <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-50 text-gray-800 ">
   <div class=" fixed  flex flex-col top-0 left-0 w-64 bg-white h-full border-r">
       <div>
-        <img src={Logo} alt="logo" style={{width: '12rem'}} />
+        <img src={Logo} alt="logo" style={{width: '10rem'}} />
       </div>
+
+      <div className="flex  rounded-b-3xl  space-y-5 flex-col items-center py-7">
+              <img className="h-28 w-28 rounded-full" src={Admin} alt="User" />
+              <p> <span className="h1  pt-4 font-bold text-black">Noureddine Maher</span></p>
+              <small>Admin</small>
+            </div>
     <div class="overflow-y-auto overflow-x-hidden flex-grow">
       <ul class="flex flex-col py-4 space-y-1">
         <Link to="/Admin">
