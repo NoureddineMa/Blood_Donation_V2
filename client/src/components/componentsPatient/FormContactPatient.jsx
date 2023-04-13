@@ -63,6 +63,9 @@ function FormContact() {
             theme: "light",
             });
     }
+
+    const token = localStorage.getItem('token')
+
     // Send Data through API:
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -74,7 +77,7 @@ function FormContact() {
             Message
         }
         try {
-            PostForm(Msg).then((data) => {
+            PostForm(Msg,token).then((data) => {
                 console.log(data.message)
                 setFirstName('')
                 setLastName('')

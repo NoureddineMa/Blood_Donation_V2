@@ -7,12 +7,12 @@ const {
     GetAllMessages
 } = require('../Controllers/ContactController')
 const verifyToken = require('../Middlewares/verifyToken')
-const verifyRole = require('../Middlewares/AdminMiddelware')
+// const verifyRole = require('../Middlewares/AdminMiddelware')
 
 
 app.post('/message',CreateMessage)
 app.delete('/message/:id',verifyToken,DeleteMessage)
-app.get('/messages',verifyToken,verifyRole,GetAllMessages)
+app.get('/messages',verifyToken,GetAllMessages)
 
 
 module.exports = app;

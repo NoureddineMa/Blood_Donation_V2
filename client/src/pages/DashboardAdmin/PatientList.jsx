@@ -3,6 +3,8 @@ import { useState , useEffect } from 'react'
 import { AllPatients , DeletePatient } from '../../Utils/Requests';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Nodata from '../../Assets/images/nodata.png'
+
 
 function PatientList() {
 
@@ -22,7 +24,6 @@ function PatientList() {
       console.log(error);
     }
   }, [])
-
 
   // delete patient 
   const Supprimer = (id) => {
@@ -138,6 +139,7 @@ function PatientList() {
                   </td>
                 </tr>
               </tbody>)) : <div className='flex flex-col lg:flex-col justify-center items-center'>
+              <img src={Nodata} alt="No data" />
           <p className='my-2 text-primary'>No data found !</p>
         </div>}
             </table>

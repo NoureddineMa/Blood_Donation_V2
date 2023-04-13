@@ -16,4 +16,4 @@ app.get('/AllPatients',verifyToken,GetAllPatients)
 app.delete('/DPatient/:id',DeletePatient)
 
 
-module.exports = app;
+module.exports = app;                                                               

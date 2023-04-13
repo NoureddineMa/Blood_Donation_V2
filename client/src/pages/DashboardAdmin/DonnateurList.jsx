@@ -8,7 +8,6 @@ import Nodata from '../../Assets/images/nodata.png'
 function DonnateurList() {
 
   const [donnateur, setDonnateur] = useState([])
-  const [status , setStatus] = useState(false)
 
   // Retrieve token from localstorage
   const token = localStorage.getItem('token')
@@ -58,8 +57,9 @@ function DonnateurList() {
   // function Accept Donnateur:
   const Accept = (id) => {
       try {
-        AcceptDonnateur(id,localStorage.getItem('token')).then((data) => {
-            console.log(data);
+        AcceptDonnateur(id,token).then((data) => {
+          console.log(data);
+          GetAllDonnateurs(token)
         }).catch((err) => {
           console.log(err);
         })
@@ -71,7 +71,7 @@ function DonnateurList() {
   // Function delete donnateur:
   const deleteDonnateur = (id) => {
     try {
-      DeleteDonnateur(id, token).then(() => {
+      DeleteDonnateur(id,token).then(() => {
         let res = donnateur.filter((donn) => donn._id !== id)
         setDonnateur(res)
         notify()
@@ -161,7 +161,7 @@ function DonnateurList() {
                   <td class="whitespace-nowrap px-4 py-2 text-orange-500">{donnateur.Status}</td>
                   <td class="whitespace-nowrap px-4 py-2">
                     <button
-                      onClick={() => { Accept(donnateur._id)}}
+                      onClick={() => { Accept(donnateur._id);console.log(donnateur._id);;console.log(token); }}
                       class="inline-block rounded bg-green-600 px-4 py-2 text-xs font-medium text-white"
                     >
                       Acceptez

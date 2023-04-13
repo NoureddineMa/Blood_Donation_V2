@@ -40,8 +40,12 @@ export async function GetAllPatients(token){
     return res.data
 }
 // POST FORM CONTACT
-export async function PostForm(Msg){
-    const res = await Api.post('/message',Msg)
+export async function PostForm(Msg,token){
+    const res = await Api.post('/message',Msg , {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
     return res.data
 }
 // POST REQUEST AS DONNATEUR 
@@ -91,8 +95,8 @@ export async function DeleteDonnateur(id,token){
 }
 // ACCEPT DONNNATEUR
 export async function AcceptDonnateur(id,token){
-    const res = await Api.put(`/AllDonnateurs/accept/${id}`, {
-        headers :{
+    const res = await Api.put(`/AllDonnateurs/accept/${id}`,{}, {
+        headers: {
             'Authorization': `Bearer ${token}`
         }
     })
@@ -115,4 +119,24 @@ export async function DeletePatient(id,token){
             'Authorization': `Bearer ${token}`
         }
     })
+    return res.data
+}
+
+// GET ALL MESSAGES :
+export async function GetAllMessages(token){
+    const res = await Api.get('/Messages' , {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    return res.data
+}
+// Delete Message
+export async function deleteMessage(token,id){
+    const res = await Api.delete(`/message/${id}` , {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    return res.data
 }
