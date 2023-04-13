@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Logout from '../Logout'
 
 function NavbarPatient() {
   return (
@@ -8,7 +9,7 @@ function NavbarPatient() {
                 <div class="mx-auto max-w-screen-xl p-4">
                     <div class="flex items-center justify-between gap-4 lg:gap-10">
                         <div class="flex lg:w-0 lg:flex-1">
-                            <Link to="/">
+                            <Link to="/patientpage">
                             <h2 className='text-red-700 font-bold'>Blood Donation</h2>
                            </Link>
                         </div>
@@ -17,9 +18,7 @@ function NavbarPatient() {
                             aria-label="Site Nav"
                             class="hidden gap-8 text-sm font-medium md:flex"
                         >
-                            <Link className="text-gray-500 hover:text-red-600" to="/">Home</Link>
-                            <Link className="text-gray-500 hover:text-red-600"to="/pubs">Publications</Link>
-                            <Link className="text-gray-500 hover:text-red-600"to="/">Se Déconnecter</Link>
+                            <Link className="text-gray-500 hover:text-red-600"><Logout /></Link>
                         </nav>
 
 

@@ -11,8 +11,6 @@ import UserContext from '../Context/UserContext'
 function LoginPage() {
 
     const navigate = useNavigate()
-    const location = useLocation()
-
 
     const { setUser } = useContext(UserContext);
 
@@ -44,7 +42,18 @@ function LoginPage() {
             setMsg("Authentication Success ...")
             setError(false)
             setStateAuth(true)
-           
+            const role = data?.nameRole
+            setTimeout(() => {
+                if(role == "Admin"){
+                    navigate('/Admin')
+                } else if (role == "Donnateur"){
+                    navigate('/donnateurpage')
+                } else if (role == "Patient"){
+                    navigate('/patientpage')
+                } else {
+                    navigate('/')
+                }
+            }, 0.2);
             // here 
         } catch (error) {
             setError(error?.response?.data?.message)
