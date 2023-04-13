@@ -46,7 +46,7 @@ const DeleteRequestDonnateur = asyncHandler(async(req,res) => {
 const GetAllDonnateurs = asyncHandler(async (req,res) => {
     const getAllDonnateursIfExist = await Donnateur.find({});
     getAllDonnateursIfExist ? res.status(200).json(getAllDonnateursIfExist)
-    : res.status(200).json({message: "No Donnateur Data founded !"})
+    : res.status(400).json({message: "No Donnateur Data founded !"})
 })
 
 
@@ -57,7 +57,7 @@ const GetAllDonnateurs = asyncHandler(async (req,res) => {
 // @Acces Private
 const GetAllDonnateursNotAccepted = asyncHandler(async(req,res) => {
     const getNotAcceptedDonnations = await Donnateur.find({ Status: 'NOT ACCEPTED'})
-    getNotAcceptedDonnations ? res.status(200).json(getNotAcceptedDonnations) : res.status(200).json({message: "0 Requests in this moment"})
+    getNotAcceptedDonnations ? res.status(200).json(getNotAcceptedDonnations) : res.status(400).json({message: "0 Requests in this moment"})
 })
 
 
@@ -65,8 +65,8 @@ const GetAllDonnateursNotAccepted = asyncHandler(async(req,res) => {
 // @Route GET /AllDonnateurs/Accepted
 // @Acces Private 
 const GetDonnateursAccepte = asyncHandler(async(req,res) => {
-    const getAcceptedDonnations = await Donnateur.find({ Status : "ACCEPTED"})
-    getAcceptedDonnations ? res.status(200).json(getAcceptedDonnations) : res.status(200).json({message: "0 Requests in this moment"})
+    const getAcceptedDonnations = await Donnateur.find({ Status : "Accepted"})
+    getAcceptedDonnations ? res.status(200).json(getAcceptedDonnations) : res.status(400).json({message: "0 Donnateur Accepted in this moment"})
 })
 
 

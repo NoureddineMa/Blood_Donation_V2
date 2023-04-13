@@ -8,6 +8,7 @@ import Nodata from '../../Assets/images/nodata.png'
 function DonnateurList() {
 
   const [donnateur, setDonnateur] = useState([])
+  
 
   // Retrieve token from localstorage
   const token = localStorage.getItem('token')
@@ -41,25 +42,23 @@ function DonnateurList() {
   }
 
   // fetch data 
-  useEffect(() => {
-    try {
-      GetAllDonnateurs(token).then((data) => {
-        setDonnateur(data)
-      }).catch((err) => {
-        console.log(err)
-      })
-    } catch (error) {
-      console.log(error)
-    }
-  }, [])
 
+  function myFuntion(){
+    GetAllDonnateurs(token).then((data) => {
+      setDonnateur(data)
+    })
+  }
+
+  useEffect(()=>{
+    myFuntion()
+  },[])
 
   // function Accept Donnateur:
-  const Accept = (id) => {
+  const Accept =  (id) => {
       try {
         AcceptDonnateur(id,token).then((data) => {
-          console.log(data);
-          GetAllDonnateurs(token)
+          console.log(data)
+          myFuntion()()
         }).catch((err) => {
           console.log(err);
         })
@@ -67,6 +66,8 @@ function DonnateurList() {
           console.log(error)
       }
   }
+
+
 
   // Function delete donnateur:
   const deleteDonnateur = (id) => {
@@ -84,6 +85,9 @@ function DonnateurList() {
       console.log(error);
     }
   }
+
+
+ 
 
   return (
     <div>
@@ -160,18 +164,23 @@ function DonnateurList() {
                   <td class="whitespace-nowrap px-4 py-2 text-gray-700">{donnateur.DateDeNaissance?.slice(0, 10)}</td>
                   <td class="whitespace-nowrap px-4 py-2 text-orange-500">{donnateur.Status}</td>
                   <td class="whitespace-nowrap px-4 py-2">
-                    <button
+                    {donnateur.Status == "NOT ACCEPTED" ?  <button
                       onClick={() => { Accept(donnateur._id);console.log(donnateur._id);;console.log(token); }}
                       class="inline-block rounded bg-green-600 px-4 py-2 text-xs font-medium text-white"
                     >
                       Acceptez
-                    </button>
+                    </button> : <></>}
+                   
                   </td>
                   <td class="whitespace-nowrap px-4 py-2">
-                    <button
+                  {donnateur.Status == "NOT ACCEPTED" ?  <button
                       onClick={() => { deleteDonnateur(donnateur._id) }}
                       class="inline-block rounded bg-red-600 px-4 py-2 text-xs font-medium text-white"
-                    >Refusez</button>
+                    >Refusez</button>  :  <button
+                    onClick={() => { deleteDonnateur(donnateur._id) }}
+                    class="inline-block rounded bg-red-600 px-4 py-2 text-xs font-medium text-white"
+                  >Supprimer</button>}
+                  
                   </td>
                 </tr>
               </tbody>)) : <div className='flex flex-col lg:flex-col justify-center items-center'>
