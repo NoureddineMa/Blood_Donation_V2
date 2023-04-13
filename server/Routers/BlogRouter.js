@@ -6,9 +6,9 @@ const {
     UpdateBlog,
     DeleteBlog
 } = require('../Controllers/BlogController')
+const {upload} = require('../Middlewares/ImageUpload')
 
-
-router.post('/blog', CreateBlog)
+router.post('/blog',CreateBlog)
 router.get('/blogs', GetAllBlogs)
 router.put('/Blog/:id', UpdateBlog)
 router.delete('DBlog/:id', DeleteBlog)

@@ -1,25 +1,42 @@
 const asyncHandler = require('express-async-handler')
 const Blog = require('../Models/BlogModel')
-
+const upload = require('../Middlewares/ImageUpload')
 //@Desc POST SINGLE BLOG
 //@Route POST /Blog
 //@Acces Private
 const CreateBlog = asyncHandler(async(req,res) => {
-    const {
-        Image , Title , Date , Content
-    } = req.body;
-    if(!Image || !Title || !Date || !Content){
-        res.status(400)
-        .json({message: "please fill all fields "})
+    // const {
+    //     Image , Title , Date , Content
+    // } = req.body;
+    // if(!Image || !Title || !Date || !Content){
+    //     res.status(400)
+    //     .json({message: "please fill all fields "})
+    // }
+    
+    // // create blog :    
+    // const BlogRequest = await Blog.create({
+    //     Image,Title,Date,Content
+    // })
+    
+    // BlogRequest ? res.status(200).json({message: "Blog created Successfully !"})
+    // : res.status(400).json({message: "ERROR , please try Again !!"})
+    try {
+        const newBlog = new Blog({
+            Image : {
+                data: req.file.buffer,
+                contentType: req.file.mimetype
+            },
+            Title : req.body.Title,
+            Date : req.body.Date,
+            Content : req.body.Content
+        })
+        console.log(Image);
+        await newBlog.save();
+        res.status(201).send('Data  Saved Successfully')
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error saving data');
     }
-    
-    // create blog :    
-    const BlogRequest = await Blog.create({
-        Image,Title,Date,Content
-    })
-    
-    BlogRequest ? res.status(200).json({message: "Blog created Successfully !"})
-    : res.status(400).json({message: "ERROR , please try Again !!"})
 })
 
 
