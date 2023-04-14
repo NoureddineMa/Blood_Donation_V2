@@ -27,8 +27,6 @@ import FormPatient from './pages/Patient/FormPatient'
 import IsLoggedIn from './Utils/IsLoggedIn'
 function App() {
 
- 
-
   return (
     <Router>
       <UserProvider>
@@ -44,7 +42,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
 
         <Route element={ <IsLoggedIn />} >
-        <Route element={localStorage.getItem('nameRole')=="Admin" ? <LayoutAdmin /> : <LandingPage />} >
+        <Route element={<LayoutAdmin />} >
             <Route path="/Admin" element={<AdminHome />} />
             <Route path="/Donnateur" element={<DonnateurList />} />
             <Route path="/Patient" element={<PatientList />}/>
@@ -53,15 +51,15 @@ function App() {
         </Route>
         {/* Layout Donnateur */}
         <Route>
-            <Route path="/donnateurpage" element={localStorage.getItem('nameRole')=="Donnateur" ? <PageDonnateur /> : <LandingPage />} />
-            <Route path="/FormDonnateur" element={localStorage.getItem('nameRole')=="Donnateur" ? <FormDonnateur /> : <LandingPage />} />
-            <Route path="/ContactDonnateur" element={localStorage.getItem('nameRole')=="Donnateur" ? <FormContactus /> : <LandingPage />} />
+            <Route path="/donnateurpage" element={<PageDonnateur />}/>
+            <Route path="/FormDonnateur" element={<FormDonnateur />}/>
+            <Route path="/ContactDonnateur" element={<FormContactus />} />
         </Route>
         {/* Layout Patient  */}
         <Route>
-            <Route path="/patientpage" element={localStorage.getItem('nameRole')=="Patient" ? <PagePatient /> : <LandingPage />} />
-            <Route path="/formPatient" element={localStorage.getItem('nameRole')=="Patient" ? <FormPatient /> : <LandingPage />} />
-            <Route path="/ContactPatient" element={localStorage.getItem('nameRole')=="Patient" ? <FormContactusPatient /> : <LandingPage />} />
+            <Route path="/patientpage" element={ <PagePatient />} />
+            <Route path="/formPatient" element={<FormPatient />} />
+            <Route path="/ContactPatient" element={<FormContactusPatient />} />
       </Route>
       </Route>
       </Routes>
