@@ -7,7 +7,6 @@ import Alert from '../Utils/Alert'
 import { login } from '../Utils/Requests'
 import { useState, useContext } from 'react';
 import UserContext from '../hooks/UserContext'
-import RoleContext from '../hooks/UserContext'
 
 
 function LoginPage() {
@@ -15,7 +14,6 @@ function LoginPage() {
     const navigate = useNavigate()
 
     const { setUser } = useContext(UserContext);
-    const { setAuthorizedRoutes } = useContext(RoleContext)
 
     const [Email, setEmail] = useState();
     const [Password, setPassword] = useState()
@@ -56,7 +54,7 @@ function LoginPage() {
                 } else {
                     navigate('/')
                 }
-            }, 0.2);
+            }, 0.4);
             // here 
         } catch (error) {
             setError(error?.response?.data?.message)

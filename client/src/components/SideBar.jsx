@@ -3,15 +3,12 @@ import Logo from '../Assets/images/BloodDonation.png'
 import { Link } from 'react-router-dom'
 import Logout from './Logout'
 import UserContext from '../hooks/UserContext'
-import RoleContext from '../hooks/RoleContext'
 import Admin from '../Assets/images/maher.jpg'
 
 const SideBar = () => {
 
     const { user } = useContext(UserContext)
-    const { role } = useContext(RoleContext)
     console.log(user);
-    console.log(role + 'FOOOOOOOOOOOO');
 
     return (
         <>

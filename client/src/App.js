@@ -7,7 +7,6 @@ import LandingPage from "./pages/LandingPage";
 import VerifyAccount from "./pages/VerifyAccount";
 import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom'
 import { UserProvider } from "./hooks/UserContext";
-import { RoleProvider } from "./hooks/RoleContext";
 import NotFound from "./pages/NotFound";
 // admin
 import LayoutAdmin from "./components/LayoutAdmin";
@@ -26,12 +25,13 @@ import FormContactusPatient from './pages/Patient/FormContactusPatient'
 import FormPatient from './pages/Patient/FormPatient'
 // isLoggedIn
 import IsLoggedIn from './Utils/IsLoggedIn'
-
 function App() {
+
+ 
+
   return (
     <Router>
       <UserProvider>
-      <RoleProvider>
       <Routes>
         <Route element={<LayoutAuth />}  >
         <Route path="/register" element={<RegisterPage />} />
@@ -44,7 +44,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
 
         <Route element={ <IsLoggedIn />} >
-        <Route element={<LayoutAdmin />} >
+        <Route element={localStorage.getItem('nameRole')=="Admin" ? <LayoutAdmin /> : <LandingPage />} >
             <Route path="/Admin" element={<AdminHome />} />
             <Route path="/Donnateur" element={<DonnateurList />} />
             <Route path="/Patient" element={<PatientList />}/>
@@ -53,19 +53,18 @@ function App() {
         </Route>
         {/* Layout Donnateur */}
         <Route>
-            <Route path="/donnateurpage" element={<PageDonnateur />} />
-            <Route path="/FormDonnateur" element={<FormDonnateur />} />
-            <Route path="/ContactDonnateur" element={<FormContactus />} />
+            <Route path="/donnateurpage" element={localStorage.getItem('nameRole')=="Donnateur" ? <PageDonnateur /> : <LandingPage />} />
+            <Route path="/FormDonnateur" element={localStorage.getItem('nameRole')=="Donnateur" ? <FormDonnateur /> : <LandingPage />} />
+            <Route path="/ContactDonnateur" element={localStorage.getItem('nameRole')=="Donnateur" ? <FormContactus /> : <LandingPage />} />
         </Route>
         {/* Layout Patient  */}
         <Route>
-            <Route path="/patientpage" element={<PagePatient />} />
-            <Route path="/formPatient" element={<FormPatient />} />
-            <Route path="/ContactPatient" element={<FormContactusPatient />} />
+            <Route path="/patientpage" element={localStorage.getItem('nameRole')=="Patient" ? <PagePatient /> : <LandingPage />} />
+            <Route path="/formPatient" element={localStorage.getItem('nameRole')=="Patient" ? <FormPatient /> : <LandingPage />} />
+            <Route path="/ContactPatient" element={localStorage.getItem('nameRole')=="Patient" ? <FormContactusPatient /> : <LandingPage />} />
       </Route>
       </Route>
       </Routes>
-      </RoleProvider>
       </UserProvider>
     </Router>
   );
